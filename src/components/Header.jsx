@@ -6,10 +6,10 @@ const whiteColor = "white";
 const greenColor = "#01634B"
 
 function Header() {
-    return(
+    return (
         <>
             <style type="text/css">
-                    {`
+                {`
                     .btn-green {
                         background-color: ${greenColor};
                         color: ${whiteColor};
@@ -31,31 +31,31 @@ function Header() {
             </style>
 
             <Navbar collapseOnSelect expand="lg">
-            <Container>
-            <Navbar.Brand href="#home">
-                <img src={image} alt="Logo" />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                <Nav.Link href="#features" className="bold margin-left">Dashboard</Nav.Link>
-                <Nav.Link href="#map" className="bold margin-left">Map</Nav.Link>
-                <Nav.Link href="#forum" className="bold margin-left">Forum</Nav.Link>
-                <Nav.Link href="#report" className="bold margin-left">Report</Nav.Link>
-                </Nav>
-                <Nav>
-                <Nav.Link href="#signup">
-                    <Button variant="white">Sign Up</Button>
-                </Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                    <Button variant="green">Login</Button>{' '}
-                </Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-            </Container>
+                <Container>
+                    <Navbar.Brand href="#home">
+                        <img src={image} alt="Logo" />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="#features" className="bold margin-left">Dashboard</Nav.Link>
+                            <Nav.Link href="#map" className="bold margin-left">Map</Nav.Link>
+                            <Nav.Link href="#forum" className="bold margin-left">Forum</Nav.Link>
+                            <Nav.Link href="#report" className="bold margin-left">Report</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href="#signup">
+                                <Button variant="white">Sign Up</Button>
+                            </Nav.Link>
+                            <Nav.Link eventKey={2} href="#memes">
+                                <Button variant="green">Login</Button>{' '}
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
         </>
-        
+
     )
 };
 
