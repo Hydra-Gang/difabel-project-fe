@@ -1,7 +1,6 @@
-
-// import { css, jsx } from '@emotion/react';
+// import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { FaBeer, FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 
 const background = '#01634B';
 
@@ -30,13 +29,18 @@ const LinkText = styled.a`
     }
 `;
 
+
+
 function Footer() {
+
     return (
         <NavbarFooter>
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-4'>
                         <Logo src='assets/logo_footer.png' alt='logo'/>
+                        <p className='copyright'>Copyright © 2022, Difable</p>
+                        <p className='slogan'>Your reliable, accurate, and trusted difable information</p>
                     </div>
 
                     <LinkText className='col-lg-2' href="#">
@@ -48,17 +52,16 @@ function Footer() {
                     </LinkText>
 
                     <LinkText className='col-lg-1' href="#">
-                        <FaFacebook />
+                        <FaFacebook className='icon' />
                     </LinkText>
 
-                    <LinkText className='col-lg-1'>
-                        <FaInstagram />
+                    <LinkText className='col-lg-1' href="#">
+                        <FaInstagram className='icon' />
                     </LinkText>
 
-                    <LinkText className='col-lg-1'>
-                        <FaWhatsapp />
+                    <LinkText className='col-lg-1' href="#">
+                        <FaWhatsapp className='icon'/>
                     </LinkText>
-
 
                 </div>
             </div>
