@@ -1,5 +1,5 @@
 import React from 'react';
-import Content from './Content';
+import ContentHero from './ContentPage/ContentHero';
 import Header from './Header';
 import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
@@ -9,7 +9,7 @@ function App() {
     return (
         <>
             <Header />
-            {/* <Content /> */}
+            <ContentHero />
             {/* <ArticlePage /> */}
             {/* <ReportPage /> */}
             <Footer />

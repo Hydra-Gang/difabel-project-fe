@@ -5,7 +5,7 @@ import { FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 const background = '#01634B';
 
 const NavbarFooter = styled.div`
-    position: fixed;
+    margin-top: 50px;
     bottom: 0;
     width: 100%;
     height: 350px;
