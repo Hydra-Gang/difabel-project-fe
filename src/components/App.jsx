@@ -3,6 +3,7 @@ import Content from './Content';
 import Header from './Header';
 import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
+import ArticlePost from './ArticlePage/ArticlePost';
 
 function App() {
     return (
@@ -10,7 +11,8 @@ function App() {
             <Header />
             {/* <Content /> */}
             {/* <ArticlePage /> */}
-            <ReportPage />
+            {/* <ReportPage /> */}
+            <ArticlePost />
         </>
     );
 }

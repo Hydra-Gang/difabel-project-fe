@@ -18,7 +18,7 @@ const TitlePage = styled.h1`
 
 const ReportInfo = styled.h5`
     font-size: 20px;
-    color: '#01634B';
+    color: #01634B;
     text-align: center;
     padding: 0;
     margin: 0;
