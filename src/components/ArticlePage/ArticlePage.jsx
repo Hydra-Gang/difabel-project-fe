@@ -8,7 +8,7 @@ const TitlePage = styled.h1`
     margin-top: 37px;
 `;
 
-const Article = () => {
+const ArticlePage = () => {
 
     return (
         <div className="container">
@@ -24,4 +24,4 @@ const Article = () => {
     );
 };
 
-export default Article;
+export default ArticlePage;
