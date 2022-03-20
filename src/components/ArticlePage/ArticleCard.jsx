@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Card, Button } from 'react-bootstrap';
 
@@ -32,7 +33,7 @@ const ArticleCard = () => {
                     <UserArticle>
                         <div className="row">
                             <div className="col-2">
-                                <userLogo><img src="assets/user.png" alt="user"/></userLogo>
+                                <img src="assets/user.png" alt="user"/>
                             </div>
                             <div className="col-10 ps-3">
                                 <UserInfo>Master Alvian</UserInfo>
