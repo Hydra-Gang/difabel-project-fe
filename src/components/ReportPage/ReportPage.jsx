@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
+import axios from 'axios';
 
 const Body = styled.div`
     padding: 28px 25px 27px 25px;
@@ -24,7 +25,18 @@ const ReportInfo = styled.h5`
     margin-bottom: 12px;
 `;
 
+const sendReport = (data) => {
+    axios.post('http://localhost:3000/v1/reports/add', data)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+};
+
 const ReportPage = () => {
+
+    const [data, setData] = useState({
+        content: ''
+    });
+
     return (
         <div className="container">
             <div className="row">
@@ -39,7 +51,8 @@ const ReportPage = () => {
                             </div>
                         </div>
                         <form action="">
-                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="report" rows="4"></textarea>
+                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="4"></textarea>
+
                             <select style={{ color: 'white', backgroundColor: '#56AB91', borderRadius: '10px' }} className="form-control mb-3" placeholder="Choose your report type" id="typeReport">
                                 <option style={{ textAlign: 'left' }}>Cheat</option>
                                 <option style={{ textAlign: 'left' }}>Abusing</option>
@@ -47,7 +60,7 @@ const ReportPage = () => {
                                 <option style={{ textAlign: 'left' }}>AFK</option>
                                 <option style={{ textAlign: 'left' }}>Leaving Game</option>
                             </select>
-                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100">Send Report</button>
+                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100" onClick={() => sendReport(data)}>Send Report</button>
                         </form>
                     </Body>
                 </Card>
