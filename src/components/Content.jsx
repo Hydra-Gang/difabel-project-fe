@@ -56,10 +56,10 @@ function Content() {
                                         <ButtonFind>Find Difabel</ButtonFind>
                                     </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
                     <div className="col-lg-6 margin-content">
                         <img src="assets/landing-page.png" alt="difabel" className="w-100 bg-primary"></img>
                     </div>
