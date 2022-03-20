@@ -19,7 +19,7 @@ const UserArticle = styled.div`
 
 const TitleArticle = styled.h5`
     font-size: 20px;
-    color: '#01634B';
+    color: #01634B;
     text-align: left;
     width: 100%;
 `;
