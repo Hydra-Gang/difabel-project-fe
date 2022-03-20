@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import ArticleCard from './ArticleCard';
 
@@ -11,7 +10,7 @@ const TitlePage = styled.h1`
 
 const Article = () => {
 
-    return(
+    return (
         <div className="container">
             <div className="row">
                 <TitlePage className="mb-3">ARTICLE PAGE</TitlePage>
@@ -23,6 +22,6 @@ const Article = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Article;

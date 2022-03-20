@@ -1,9 +1,9 @@
-import React from "react";
-import { Navbar, Button, Container, Nav } from "react-bootstrap";
+import React from 'react';
+import { Navbar, Button, Container, Nav } from 'react-bootstrap';
 
-const image = "assets/Logo.png";
-const whiteColor = "white";
-const greenColor = "#01634B"
+const image = 'assets/Logo.png';
+const whiteColor = 'white';
+const greenColor = '#01634B';
 
 function Header() {
     return (
@@ -56,7 +56,7 @@ function Header() {
             </Navbar>
         </>
 
-    )
-};
+    );
+}
 
 export default Header;
