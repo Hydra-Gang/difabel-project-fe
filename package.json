@@ -14,11 +14,18 @@
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "eslintConfig": {
     "extends": [
