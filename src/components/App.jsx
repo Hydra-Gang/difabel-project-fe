@@ -3,8 +3,12 @@ import ContentHero from './ContentPage/ContentHero';
 import Header from './Header';
 import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
+
 import Footer from './Footer';
 import ContentArticle from './ContentPage/ContentArticle';
+
+// import ArticlePost from './ArticlePage/ArticlePost';
+
 
 function App() {
     return (
@@ -15,6 +19,9 @@ function App() {
             {/* <ArticlePage /> */}
             {/* <ReportPage /> */}
             <Footer />
+
+//             <ArticlePost />
+
         </>
     );
 }
