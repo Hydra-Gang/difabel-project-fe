@@ -29,8 +29,6 @@ const LinkText = styled.a`
     }
 `;
 
-
-
 function Footer() {
 
     return (
