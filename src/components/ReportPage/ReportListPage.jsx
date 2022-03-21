@@ -10,6 +10,17 @@ const Heading = styled.h1`
     margin-top: 5%;
 `;
 
+const ListReport = styled.p`
+    color: #01634B;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    padding: 0px 5%;
+    margin-left: auto;
+    position: relative;
+`;
+
 // http://localhost:5000/v1/reports/
 
 function ReportListPage() {
@@ -34,10 +45,16 @@ function ReportListPage() {
     return (
         <div className='container'>
             <Heading>REPORT LIST</Heading>
-            {loading && <div>Loading</div>}
+            {loading && <div>Wait....</div>}
             {!loading && (
                 <div>
-                    {data.map((item) => (<Heading key={item.id}>{item.content}</Heading>))}
+                    {data.map((item) => (
+                        <div key={item.id}>
+                            <ListReport> <input type="checkbox"></input> </ListReport>
+                            <ListReport>{item.createdAt}</ListReport>
+                            <ListReport>{`${item.content.substring(0, 30)}`}</ListReport>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
