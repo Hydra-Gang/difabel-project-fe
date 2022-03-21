@@ -16,6 +16,12 @@ function Header() {
                         font-weight: 700;
                     }
 
+                    .btn-green:hover {
+                        background-color: ${whiteColor};
+                        color: ${greenColor};
+                        border: solid 1px;
+                    }
+
                     .btn-white {
                         background-color: ${whiteColor};
                         color: ${greenColor};
@@ -40,12 +46,13 @@ function Header() {
                         <Nav className="me-auto">
                             <Nav.Link href="#features" className="bold margin-left">Dashboard</Nav.Link>
                             <Nav.Link href="#map" className="bold margin-left">Map</Nav.Link>
-                            <Nav.Link href="#forum" className="bold margin-left">Forum</Nav.Link>
+                            <Nav.Link href="#forum" className="bold margin-left">Article</Nav.Link>
                             <Nav.Link href="#report" className="bold margin-left">Report</Nav.Link>
+                            <Nav.Link href="#report" className="bold margin-left">Donate</Nav.Link>
                         </Nav>
                         <Nav>
                             <Nav.Link href="#signup">
-                                <Button variant="white">Sign Up</Button>
+                                <Button variant="white">Register</Button>
                             </Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
                                 <Button variant="green">Login</Button>{' '}

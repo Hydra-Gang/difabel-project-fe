@@ -42,7 +42,7 @@ const ButtonFind = styled.button`
     }
 `;
 
-function Content() {
+function ContentHero() {
     return (
         <>
             <div className="container">
@@ -69,4 +69,4 @@ function Content() {
     );
 }
 
-export default Content;
+export default ContentHero;

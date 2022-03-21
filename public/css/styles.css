@@ -2,7 +2,11 @@
 
 * {
     font-family: "Montserrat";
-    text-align: center;
+    /* text-align: center; */
+}
+
+.center {
+    margin: auto;
 }
 
 .bold {
@@ -15,4 +19,21 @@
 
 .user-article {
     margin-top: 100px;
+}
+
+.icon {
+    font-size: 40px;
+}
+
+.icon:hover {
+    color: #99CBF9;
+}
+
+.copyright {
+    margin-top: 16px;
+    color: white;
+}
+
+.slogan {
+    color: #C8FAB1;
 }
