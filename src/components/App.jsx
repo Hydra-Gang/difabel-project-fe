@@ -1,6 +1,8 @@
 import React from 'react';
 import ContentHero from './ContentPage/ContentHero';
 import Header from './Header';
+import RegisterPage from './AuthenticationPage/RegisterPage';
+import LoginPage from './AuthenticationPage/LoginPage';
 import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
 
@@ -14,14 +16,14 @@ function App() {
     return (
         <>
             <Header />
-            <ContentHero />
-            <ContentArticle />
+            {/* <RegisterPage /> */}
+            <LoginPage />
+            {/* <ContentHero /> */}
+            {/* <ContentArticle /> */}
             {/* <ArticlePage /> */}
             {/* <ReportPage /> */}
+            {/* <ArticlePost /> */}
             <Footer />
-
-//             <ArticlePost />
-
         </>
     );
 }

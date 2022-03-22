@@ -37,3 +37,13 @@
 .slogan {
     color: #C8FAB1;
 }
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #01634B !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
