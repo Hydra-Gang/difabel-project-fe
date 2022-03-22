@@ -40,7 +40,7 @@ const ReportPage = () => {
     return (
         <div className="container">
             <div className="row">
-                <TitlePage className="mb-3">REPORT PAGE</TitlePage>
+                <TitlePage className="mb-3 text-center">REPORT PAGE</TitlePage>
             </div>
             <div className="row">
                 <Card className="border-0 w-50" style={{ float: 'none', margin: '0 auto' }}>

@@ -1,3 +1,26 @@
 .margin-content {
     margin-top: 150px;
 }
+
+.center-div {
+    display: flex;
+    align-items: center;
+}
+
+div.header {
+    background-color: #56ab91;
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+div.list {
+    border-radius: 10px;
+    padding: 8px;
+}
+
+div.item-list {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 12px;
+}

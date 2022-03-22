@@ -1,26 +1,28 @@
 import React from 'react';
 import ContentHero from './ContentPage/ContentHero';
 import Header from './Header';
-import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
 
 import Footer from './Footer';
 import ContentArticle from './ContentPage/ContentArticle';
 
-// import ArticlePost from './ArticlePage/ArticlePost';
+import ArticlePost from './ArticlePage/ArticlePost';
+import ArticlePage from './ArticlePage/ArticlePage';
+import ArticleListPage from './ArticlePage/ArticleListPage';
 
 
 function App() {
     return (
         <>
             <Header />
-            <ContentHero />
-            <ContentArticle />
+            {/* <ContentHero /> */}
+            {/* <ContentArticle /> */}
+            {/* <ArticlePost /> */}
             {/* <ArticlePage /> */}
+            <ArticleListPage />
             {/* <ReportPage /> */}
             <Footer />
 
-//             <ArticlePost />
 
         </>
     );

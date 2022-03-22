@@ -22,7 +22,7 @@ function ContentArticle() {
                 <ArticleCard />
             </div>
             <div className='row'>
-                <Button style={{ backgroundColor: '#01634B', padding: 10 }} className="w-75 center">See All Article</Button>
+                <Button style={{ backgroundColor: '#01634B', padding: 10 }} className="w-75 border-0 center">See All Article</Button>
             </div>
         </div>
     );

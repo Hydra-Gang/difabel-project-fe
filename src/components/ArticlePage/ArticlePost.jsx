@@ -20,7 +20,7 @@ const Title = styled.h5`
 
 const ArticlePost = () => {
     return (
-        <div className="container min-vh-100">
+        <div className="container">
             <div className="row">
                 <div className="col-lg-6 col-md-12">
                     <img className="w-100" src="assets/add_article.png" alt="user"/>
