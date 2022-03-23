@@ -22,8 +22,6 @@ function App() {
             <ArticleListPage />
             {/* <ReportPage /> */}
             <Footer />
-
-
         </>
     );
 }
