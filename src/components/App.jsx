@@ -1,6 +1,8 @@
 import React from 'react';
 import ContentHero from './ContentPage/ContentHero';
 import Header from './Header';
+import RegisterPage from './AuthenticationPage/RegisterPage';
+import LoginPage from './AuthenticationPage/LoginPage';
 import ArticlePage from './ArticlePage/ArticlePage';
 import ReportPage from './ReportPage/ReportPage';
 
@@ -18,18 +20,20 @@ function App() {
     return (
         <>
             <Header />
+            {/* <RegisterPage /> */}
+            {/* <LoginPage /> */}
+            {/* <ContentHero /> */}
+            {/* <ContentArticle /> */}
             <ContentHero />
             {/* <ArticlePage /> */}
             {/* <ReportListPage /> */}
             <ContentArticle />
             <Map widthMap="50vw" heightMap="50vh"/>
             {/* <ReportPage /> */}
+            {/* <ArticlePost /> */}
             <ContentCarousel />
             <ContentReportPage />
             <Footer />
-
-//             <ArticlePost />
-
         </>
     );
 }
