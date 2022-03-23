@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import styled from 'styled-components';
+import axios from 'axios';
 import { schema } from '../../validations/register-validation';
 import LoginFormInput from './LoginFormInput';
 
@@ -30,14 +31,15 @@ const LoginForm = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [backendError, setBackendError] = useState('');
 
-    const validateForm = (e) => {
+    const validateForm = async (e) => {
         const result = schema.validate(data, { abortEarly: false });
         const { error } = result;
 
-        if (error) {
-            e.preventDefault();
+        e.preventDefault();
 
+        if (error) {
             const errorData = {};
 
             for (const err of error.details) {
@@ -47,11 +49,22 @@ const LoginForm = () => {
             }
 
             setErrors(errorData);
+        } else {
+            try {
+                const res = await axios.post('http://localhost:5000/v1/auth/login', data);
+                const token = res.data.data;
+                localStorage.setItem('difabel', JSON.stringify(token));
+            } catch (err) {
+                const errorMessage = err.response.data.message;
+                setBackendError(errorMessage);
+            }
         }
     };
 
     return (
-        <Form method="POST" className="w-75 float-lg-start m-auto">
+        <Form className="w-75 float-lg-start m-auto">
+            {backendError && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{backendError}</div>}
+
             <FormInputContext.Provider value={[data, setData, errors]}>
                 <LoginFormInput type="text" propKey="email" propName="Email" iconName={<FaEnvelope />} />
                 <LoginFormInput type="password" propKey="password" propName="Password" iconName={<FaLock />} />

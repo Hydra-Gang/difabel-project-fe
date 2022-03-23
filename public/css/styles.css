@@ -5,6 +5,16 @@
     /* text-align: center; */
 }
 
+::-moz-selection {
+    background-color: #01634B;
+    color: #fff;
+}
+
+::selection {
+    background-color: #01634B;
+    color: #fff;
+}
+
 .center {
     margin: auto;
 }
