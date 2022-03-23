@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Tatang sumintang",
+    "type": "Sensorik",
+    "address": "Karangmekar, Cimahi Tengah, Cimahi City, West Java 40523",
+    "gps": { "latitude": -6.882379, "longitude": 107.541936 }
+  },
+  {
+    "id": 2,
+    "name": "Leon hart",
+    "type": "Intellect",
+    "address": "Kimia Farma Paint Bandung Pt., Pasir Kaliki, Kec. Cicendo, Kota Bandung, Jawa Barat",
+    "gps": { "latitude": -6.907547, "longitude": 107.603505 }
+  },
+  {
+    "id": 3,
+    "name": "Albert Derth",
+    "type": "Mental",
+    "address": "Jl. Pramuka Sari II No.1, RW.1, Palmeriam, Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13140",
+    "gps": { "latitude": -6.197499, "longitude": 106.856857 }
+  }
+]
