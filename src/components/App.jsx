@@ -7,16 +7,18 @@ import Footer from './Footer';
 import ContentArticle from './ContentPage/ContentArticle';
 import ContentReportPage from './ContentPage/ContentReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
+import Map from './Map/Map';
 
 function App() {
     return (
         <>
             <Header />
+            <Map/>
             {/* <ContentHero /> */}
             {/* <ContentArticle /> */}
             {/* <ArticlePage /> */}
             {/* <ReportPage /> */}
-            <ReportListPage />
+            {/* <ReportListPage /> */}
             {/* <ContentReportPage /> */}
             <Footer />
         </>
