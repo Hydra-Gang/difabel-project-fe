@@ -14,6 +14,10 @@ const Heading = styled.h1`
     margin-top: 25%;
 `;
 
+const textPopUp = styled.p`
+    display: inline;
+`;
+
 function Map(props) {
     console.log(props);
     const widthMap = props.widthMap;
@@ -40,9 +44,10 @@ function Map(props) {
                     >
                         <Popup position={[difabel.gps.latitude, difabel.gps.longitude]}>
                             <div>
-                                <h4>{`Name: ${difabel.name}`}</h4>
-                                <p>{`Type Difabel: ${difabel.type}`}</p>
-                                <p>{`Address: ${difabel.address}`}</p>
+                                <h5>{`${difabel.name}`}</h5>
+                                <textPopUp>{`Type Difabel: ${difabel.type}`}</textPopUp>
+                                <br></br>
+                                <textPopUp>{`Address: ${difabel.address}`}</textPopUp>
                             </div>
                         </Popup>
 
