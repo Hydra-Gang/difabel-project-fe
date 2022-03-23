@@ -17,7 +17,7 @@ function App() {
         <>
             <Header />
             {/* <RegisterPage /> */}
-            <LoginPage />
+            {/* <LoginPage /> */}
             {/* <ContentHero /> */}
             {/* <ContentArticle /> */}
             {/* <ArticlePage /> */}
