@@ -1,16 +1,32 @@
+import { Button } from 'react-bootstrap';
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import difabelsData from './difabel-location.json';
+import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
-function Map() {
+const Heading = styled.h1`
+    color: #01634B;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 25%;
+`;
+
+function Map(props) {
+    console.log(props);
+    const widthMap = props.widthMap;
+    const heightMap = props.heightMap;
 
     return (
         <div className='container'>
+            <Heading>DIFABEL MAP DISTRIBUTION</Heading>
             <MapContainer
                 center={[-0.789275, 113.921326]}
                 zoom={4}
                 scrollWheelZoom={true}
-                style={{ width: '50vw', height: '50vh', margin: '10% auto' }}
+                style={{ width: widthMap, height: heightMap, margin: '5% auto' }}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -34,8 +50,21 @@ function Map() {
                 ))}
 
             </MapContainer>
+            <div className='row'>
+                <Button
+                    style={{ backgroundColor: '#01634B', padding: 20 }}
+                    className="w-75 center"
+                >
+                Add Difabel Location
+                </Button>
+            </div>
         </div>
     );
 }
+
+Map.propTypes = {
+    widthMap: PropTypes.string,
+    heightMap: PropTypes.string
+};
 
 export default Map;

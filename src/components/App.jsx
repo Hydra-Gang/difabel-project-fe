@@ -13,13 +13,13 @@ function App() {
     return (
         <>
             <Header />
-            <Map/>
-            {/* <ContentHero /> */}
-            {/* <ContentArticle /> */}
+            <ContentHero />
             {/* <ArticlePage /> */}
-            {/* <ReportPage /> */}
             {/* <ReportListPage /> */}
-            {/* <ContentReportPage /> */}
+            <ContentArticle />
+            <Map widthMap="50vw" heightMap="50vh"/>
+            {/* <ReportPage /> */}
+            <ContentReportPage />
             <Footer />
         </>
     );

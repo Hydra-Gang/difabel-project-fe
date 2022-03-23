@@ -9,7 +9,7 @@ const Heading = styled.h1`
     font-size: 40px;
     font-weight: 700;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 30%;
 `;
 
 function ContentArticle() {
