@@ -1,9 +1,11 @@
 import { createContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import styled from 'styled-components';
-import axios from 'axios';
-import { schema } from '../../validations/register-validation';
+import PropTypes from 'prop-types';
+import axios from '../../axios-instance';
+import { schema } from '../../validations/login-validation';
 import LoginFormInput from './LoginFormInput';
 
 const LoginButton = styled.button`
@@ -24,7 +26,7 @@ const RegisterLink = styled.a`
 
 const FormInputContext = createContext();
 
-const LoginForm = () => {
+const LoginForm = ({ setIsAuthenticated }) => {
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -32,6 +34,8 @@ const LoginForm = () => {
 
     const [errors, setErrors] = useState({});
     const [backendError, setBackendError] = useState('');
+
+    const navigate = useNavigate();
 
     const validateForm = async (e) => {
         const result = schema.validate(data, { abortEarly: false });
@@ -51,9 +55,11 @@ const LoginForm = () => {
             setErrors(errorData);
         } else {
             try {
-                const res = await axios.post('http://localhost:5000/v1/auth/login', data);
+                const res = await axios.post('/auth/login', data);
                 const token = res.data.data;
                 localStorage.setItem('difabel', JSON.stringify(token));
+                setIsAuthenticated(true);
+                navigate('/');
             } catch (err) {
                 const errorMessage = err.response.data.message;
                 setBackendError(errorMessage);
@@ -69,10 +75,14 @@ const LoginForm = () => {
                 <LoginFormInput type="text" propKey="email" propName="Email" iconName={<FaEnvelope />} />
                 <LoginFormInput type="password" propKey="password" propName="Password" iconName={<FaLock />} />
                 <LoginButton as={Button} type="submit" className="w-100 mb-3 border-0" onClick={validateForm}>Login</LoginButton>
-                <p className="text-center">Don't have an account? <RegisterLink href="/register" style={{ color: '#01634B' }}>Register</RegisterLink></p>
+                <p className="text-center">Don't have an account? <RegisterLink as={Link} to="/register" style={{ color: '#01634B' }}>Register</RegisterLink></p>
             </FormInputContext.Provider>
         </Form>
     );
+};
+
+LoginForm.propTypes = {
+    setIsAuthenticated: PropTypes.func
 };
 
 export { FormInputContext };

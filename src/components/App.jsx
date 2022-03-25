@@ -1,43 +1,90 @@
-import React from 'react';
-import ContentHero from './ContentPage/ContentHero';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Routes, Route } from 'react-router-dom';
+import axios from '../axios-instance';
 import Header from './Header';
-// import RegisterPage from './AuthenticationPage/RegisterPage';
-// import LoginPage from './AuthenticationPage/LoginPage';
+import Index from './Index';
+import RegisterPage from './AuthenticationPage/RegisterPage';
+import LoginPage from './AuthenticationPage/LoginPage';
 import ArticlePage from './ArticlePage/ArticlePage';
+import ArticlePost from './ArticlePage/ArticlePost';
 import ReportPage from './ReportPage/ReportPage';
-
-import Footer from './Footer';
-import ContentArticle from './ContentPage/ContentArticle';
-import ContentReportPage from './ContentPage/ContentReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
-import Map from './Map/Map';
-import ContentCarousel from './ContentCarousel';
+import Footer from './Footer';
 
-// import ArticlePost from './ArticlePage/ArticlePost';
+const App = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [userFullName, setUserFullName] = useState('');
 
+    useEffect(() => {
+        const getNewAccessToken = (token) => {
+            const refreshToken = JSON.parse(token).refreshToken;
 
-function App() {
+            if (refreshToken) {
+                axios.post('/auth/refresh', {}, {
+                    headers: {
+                        'Authorization': `Bearer ${refreshToken}`
+                    }
+                }).then((res) => {
+                    const newAccessToken = res.data.data.accessToken;
+
+                    const newToken = {
+                        accessToken: newAccessToken,
+                        refreshToken: refreshToken
+                    };
+
+                    localStorage.setItem('difabel', JSON.stringify(newToken));
+                }).catch(() => {
+                    localStorage.removeItem('difabel');
+                    setIsAuthenticated(false);
+                });
+            } else {
+                setIsAuthenticated(false);
+            }
+        };
+
+        const checkAuthenticated = () => {
+            const token = localStorage.getItem('difabel');
+
+            if (token) {
+                const accessToken = JSON.parse(token).accessToken;
+
+                if (accessToken) {
+                    axios.get('/users', {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`
+                        }
+                    }).then((res) => {
+                        const { fullName } = res.data.data.user;
+                        setUserFullName(fullName);
+                    }).catch(() => {
+                        getNewAccessToken(token);
+                    });
+                } else {
+                    setIsAuthenticated(false);
+                }
+            } else {
+                setIsAuthenticated(false);
+            }
+        };
+
+        checkAuthenticated();
+    }, []);
+
     return (
-        <>
-            <Header />
-            {/* <RegisterPage /> */}
-            {/* <LoginPage /> */}
-            {/* <ContentHero /> */}
-            {/* <ContentArticle /> */}
-            {/* <ContentHero /> */}
-            {/* <ArticlePage /> */}
-            {/* <ReportListPage /> */}
-            {/* <ContentArticle /> */}
-            {/* <Map widthMap="50vw" heightMap="50vh"/> */}
-            {/* <ReportPage /> */}
-            {/* <ArticlePost /> */}
-            {/* <ContentCarousel /> */}
-            {/* <ContentReportPage /> */}
+        <div className="app">
+            <Header isAuthenticated={isAuthenticated} userFullName={userFullName} />
+            <Routes>
+                <Route exact path="/" element={<Index />} />
+                <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />} />
+                <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
+                <Route exact path="/article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />} />
+                <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
+                <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
+                <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
+            </Routes>
             <Footer />
-        </>
+        </div>
     );
-}
-
-// http://localhost:5000/v1/reports/
+};
 
 export default App;
