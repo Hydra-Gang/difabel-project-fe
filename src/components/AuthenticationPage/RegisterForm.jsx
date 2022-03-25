@@ -1,9 +1,10 @@
 import { createContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { FaEnvelope, FaLock, FaPhoneAlt, FaTag } from 'react-icons/fa';
 import styled from 'styled-components';
-import axios from 'axios';
-import { schema } from '../../validations/login-validation';
+import axios from '../../axios-instance';
+import { schema } from '../../validations/register-validation';
 import RegisterFormInput from './RegisterFormInput';
 
 const RegisterButton = styled.button`
@@ -57,9 +58,17 @@ const RegisterForm = () => {
             const { confirmPassword, ...newData } = data;
 
             try {
-                await axios.post('http://localhost:5000/v1/auth/register', newData);
+                await axios.post('/auth/register', newData);
 
                 setData({
+                    fullName: '',
+                    phone: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: ''
+                });
+
+                setErrors({
                     fullName: '',
                     phone: '',
                     email: '',
@@ -78,7 +87,7 @@ const RegisterForm = () => {
     return (
         <Form className="w-75 float-lg-start m-auto">
             {backendError && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{backendError}</div>}
-            {successMessage && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert" style={{ zIndex: '1' }}>Registration successful. You can <a href="/login">login</a> now</div>}
+            {successMessage && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert" style={{ zIndex: '1' }}>Registration successful. You can <LoginLink as={Link} to="/login" className="fw-bold" style={{ color: '#01634B' }}>login</LoginLink> now</div>}
 
             <FormInputContext.Provider value={[data, setData, errors]}>
                 <RegisterFormInput type="text" propKey="fullName" propName="Full Name" iconName={<FaTag />} />
@@ -87,7 +96,7 @@ const RegisterForm = () => {
                 <RegisterFormInput type="password" propKey="password" propName="Password" iconName={<FaLock />} />
                 <RegisterFormInput type="password" propKey="confirmPassword" propName="Confirm Password" iconName={<FaLock />} />
                 <RegisterButton as={Button} type="submit" className="w-100 mb-3 border-0" onClick={validateForm}>Register</RegisterButton>
-                <p className="text-center">Already have an account? <LoginLink href="/login" style={{ color: '#01634B' }}>Login</LoginLink></p>
+                <p className="text-center">Already have an account? <LoginLink as={Link} to="/login" style={{ color: '#01634B' }}>Login</LoginLink></p>
             </FormInputContext.Provider>
         </Form>
     );
