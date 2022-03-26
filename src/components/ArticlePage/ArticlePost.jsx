@@ -27,7 +27,7 @@ const ArticlePost = () => {
                 </div>
                 <div className="col-lg-6 col-md-12 d-flex flex-column">
                     <Card className="border-0 w-100" style={{ float: 'none', margin: 'auto' }}>
-                        <Title className="mb-3">ADD ARTICLE PAGE</Title>
+                        <Title className="mb-3 text-center">ADD ARTICLE PAGE</Title>
                         <Body>
                             <form action="">
                                 <Form.Control type="text" style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="mb-3" placeholder="Enter your title" />
