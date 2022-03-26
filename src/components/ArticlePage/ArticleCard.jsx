@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Card, Button } from 'react-bootstrap';
 
@@ -25,30 +26,48 @@ const TitleArticle = styled.h5`
 `;
 
 const ArticleCard = () => {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data: response } = await axios.get('http://localhost:5000/v1/articles/');
+                setData(response.data.reports);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <div className="col-lg-4 col-md-6 col-12 mb-3">
-            <Card className="border-0" style={{ borederRadius: '10px' }}>
-                <Body>
-                    <TitleArticle>How to Master Everything in 1 Year</TitleArticle>
-                    <UserArticle>
-                        <div className="row">
-                            <div className="col-2">
-                                <img src="assets/user.png" alt="user"/>
+            {data.map((item) => (
+                <Card className="border-0" style={{ borederRadius: '10px' }} key={item.id}>
+                    <Body>
+                        <TitleArticle>{item.title}</TitleArticle>
+                        <UserArticle>
+                            <div className="row">
+                                <div className="col-2">
+                                    <img src="assets/user.png" alt="user"/>
+                                </div>
+                                <div className="col-10 ps-3">
+                                    <UserInfo>Master Alvian</UserInfo>
+                                    <UserInfo className="text-muted">5h ago</UserInfo>
+                                </div>
                             </div>
-                            <div className="col-10 ps-3">
-                                <UserInfo>Master Alvian</UserInfo>
-                                <UserInfo className="text-muted">5h ago</UserInfo>
+                        </UserArticle>
+                        <Card.Text className="mt-3 text-start">
+                            <div style={{ backgroundColor: '#01634B', fontSize: '16px' }} className="p-3 rounded text-white text-start">
+                                {item.content}
                             </div>
-                        </div>
-                    </UserArticle>
-                    <Card.Text className="mt-3 text-start">
-                        <div style={{ backgroundColor: '#01634B', fontSize: '16px' }} className="p-3 rounded text-white text-start">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div>
-                    </Card.Text>
-                    <Button style={{ backgroundColor: '#56AB91' }} className="w-100">See Details</Button>
-                </Body>
-            </Card>
+                        </Card.Text>
+                        <Button style={{ backgroundColor: '#56AB91' }} className="w-100 border-0">See Details</Button>
+                    </Body>
+                </Card>
+            ))}
         </div>
     );
 };
