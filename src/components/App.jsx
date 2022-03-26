@@ -76,15 +76,13 @@ const App = () => {
             <Header isAuthenticated={isAuthenticated} userFullName={userFullName} />
             <Routes>
                 <Route exact path="/" element={<Index />} />
-                <Route exact path="login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />} />
-                <Route exact path="register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
+                <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />} />
+                <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
                 <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
-                <Route path="article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />}>
-                    <Route path="add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
-                </Route>
-                <Route path="report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />}>
-                    <Route path="list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
-                </Route>
+                <Route exact path="/article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />} />
+                <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
+                <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
+                <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
             </Routes>
             <Footer />
         </div>
