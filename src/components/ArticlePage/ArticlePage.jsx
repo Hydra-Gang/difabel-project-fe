@@ -13,7 +13,7 @@ const ArticlePage = () => {
     return (
         <div className="container">
             <div className="row">
-                <TitlePage className="mb-3">ARTICLE PAGE</TitlePage>
+                <TitlePage className="mb-3 text-center">ARTICLE PAGE</TitlePage>
             </div>
             <div className="row">
                 <ArticleCard />
