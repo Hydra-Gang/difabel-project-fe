@@ -73,9 +73,11 @@ const ArticleListPage = () => {
                         Action
                     </div>
                 </div>
-                <Article />
-                <Article />
-                <Article />
+                <div className="row list">
+                    <Article />
+                    <Article />
+                    <Article />
+                </div>
             </div>
         </div>
     );

@@ -49,23 +49,23 @@ const ButtonApprove = styled.button`
 
 function Article() {
 
-    const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    // const [data, setData] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const { data: response } = await axios.get('http://localhost:5000/v1/reports/');
-                setData(response.data.reports);
-            } catch (error) {
-                console.error(error.message);
-            }
-            setLoading(false);
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         setLoading(true);
+    //         try {
+    //             const { data: response } = await axios.get('http://localhost:5000/v1/reports/');
+    //             setData(response.data.reports);
+    //         } catch (error) {
+    //             console.error(error.message);
+    //         }
+    //         setLoading(false);
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
     return (
         <div className="row p-3">
