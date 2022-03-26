@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Form, Image } from 'react-bootstrap';
-import { FaDonate, FaHandHoldingHeart, FaUser } from 'react-icons/fa';
+import { FaDonate, FaHandHoldingHeart, FaLaugh, FaUser } from 'react-icons/fa';
 import styled from 'styled-components';
 import DonationFormInput from './DonationFormInput';
 
@@ -23,6 +24,16 @@ const DonateButton = styled.button`
     }
 `;
 
+const HomeLink = styled.a`
+    background-color: #01634B;
+    color: #FFF;
+
+    &:hover, &:focus {
+        background-color: #00533F;
+        color: #FFF;
+    }
+`;
+
 const FormInputContext = createContext();
 
 const DonationForm = () => {
@@ -31,19 +42,33 @@ const DonationForm = () => {
         money: ''
     });
 
-    return (
-        <Box className="m-auto d-flex align-items-center">
-            <Form className="w-100 p-4">
-                <h6 className="text-center mb-3 fw-normal" style={{ color: '#01634B' }}><FaHandHoldingHeart /> Your donation means a lot to us</h6>
-                <DonationImage as={Image} src="assets/donate.png" className="d-block m-auto" alt="Donate"></DonationImage>
-                {/* {backendError && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{backendError}</div>} */}
+    const [success, setSuccess] = useState(false);
 
-                <FormInputContext.Provider value={[data, setData]}>
-                    <DonationFormInput propKey="donator" propName="Name" iconName={<FaUser />} />
-                    <DonationFormInput propKey="money" propName="Donation Amount" iconName={<FaDonate />} />
-                    <DonateButton as={Button} type="submit" className="w-100 mb-3 border-0">Donate</DonateButton>
-                </FormInputContext.Provider>
-            </Form>
+    const validateForm = () => {
+        setSuccess(true);
+    };
+
+    return (
+        <Box className="m-auto p-4 d-flex align-items-center">
+            {!success ? (
+                <Form className="w-100">
+                    <h6 className="text-center mb-3 fw-normal" style={{ color: '#01634B' }}><FaHandHoldingHeart /> Your donation means a lot to us</h6>
+                    <DonationImage as={Image} src="assets/donate.png" className="d-block m-auto" alt="Donate"></DonationImage>
+                    {/* {backendError && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{backendError}</div>} */}
+
+                    <FormInputContext.Provider value={[data, setData]}>
+                        <DonationFormInput propKey="donator" propName="Name" iconName={<FaUser />} />
+                        <DonationFormInput propKey="money" propName="Donation Amount" iconName={<FaDonate />} />
+                        <DonateButton as={Button} type="submit" className="w-100 mb-3 border-0" onClick={validateForm}>Donate</DonateButton>
+                    </FormInputContext.Provider>
+                </Form>
+            ) : (
+                <Form className="w-100">
+                    <h6 className="text-center mb-3 fw-normal" style={{ color: '#01634B' }}><FaLaugh /> Thank you for your donation</h6>
+                    <DonationImage as={Image} src="assets/donate.png" className="d-block m-auto" alt="Donate"></DonationImage>
+                    <HomeLink as={Link} to="/" className="btn d-block m-auto">Back to Home</HomeLink>
+                </Form>
+            )}
         </Box>
     );
 };
