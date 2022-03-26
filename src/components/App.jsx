@@ -9,6 +9,7 @@ import ArticlePage from './ArticlePage/ArticlePage';
 import ArticlePost from './ArticlePage/ArticlePost';
 import ReportPage from './ReportPage/ReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
+import DonationPage from './DonationPage/DonationPage';
 import Footer from './Footer';
 
 const App = () => {
@@ -81,6 +82,7 @@ const App = () => {
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
+                <Route exact path="/donate" element={<DonationPage />} />
             </Routes>
             <Footer />
         </div>
