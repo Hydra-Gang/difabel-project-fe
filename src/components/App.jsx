@@ -3,6 +3,7 @@ import { Navigate, Routes, Route } from 'react-router-dom';
 import axios from '../axios-instance';
 import Header from './Header';
 import Index from './Index';
+import Dashboard from './Dashboard';
 import RegisterPage from './AuthenticationPage/RegisterPage';
 import LoginPage from './AuthenticationPage/LoginPage';
 import ArticlePage from './ArticlePage/ArticlePage';
@@ -77,6 +78,7 @@ const App = () => {
                 <Route exact path="/" element={<Index />} />
                 <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />} />
                 <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
+                <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
                 <Route exact path="/article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />} />
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />

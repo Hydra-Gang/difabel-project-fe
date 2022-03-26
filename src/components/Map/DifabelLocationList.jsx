@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../index.css';
-import Article from './Article';
+import ListLocation from './ListLocation';
 
 const TitlePage = styled.h1`
     color: #01634B;
@@ -55,11 +55,11 @@ const ButtonApprove = styled.button`
     }
 `;
 
-const ArticleListPage = () => {
+const DifabelLocationListPage = () => {
     return (
         <div className="container">
             <div className="row">
-                <TitlePage className="mb-5 text-center">ARTICLE LIST</TitlePage>
+                <TitlePage className="mb-5 text-center">DIFABEL LOCATION LIST</TitlePage>
             </div>
             <div className="item-list w-75" style={{ float: 'none', margin: '0 auto' }}>
                 <div className="row header">
@@ -74,13 +74,14 @@ const ArticleListPage = () => {
                     </div>
                 </div>
                 <div className="row list">
-                    <Article />
-                    <Article />
-                    <Article />
+                    <ListLocation />
+                    <ListLocation />
+                    <ListLocation />
+                    <ListLocation />
                 </div>
             </div>
         </div>
     );
 };
 
-export default ArticleListPage;
+export default DifabelLocationListPage;
