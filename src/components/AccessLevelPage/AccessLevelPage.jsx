@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../index.css';
-import Article from './Article';
+import UserList from './UserList';
 
 const TitlePage = styled.h1`
     color: #01634B;
@@ -11,7 +11,7 @@ const TitlePage = styled.h1`
     margin-bottom: 65px;
 `;
 
-const ArticleListPage = () => {
+const AccessLevelPage = () => {
     return (
         <div className="container">
             <div className="row">
@@ -30,13 +30,13 @@ const ArticleListPage = () => {
                     </div>
                 </div>
                 <div className="row list">
-                    <Article />
-                    <Article />
-                    <Article />
+                    <UserList />
+                    <UserList />
+                    <UserList />
                 </div>
             </div>
         </div>
     );
 };
 
-export default ArticleListPage;
+export default AccessLevelPage;
