@@ -10,6 +10,7 @@ import ArticlePost from './ArticlePage/ArticlePost';
 import ReportPage from './ReportPage/ReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
 import DonationPage from './DonationPage/DonationPage';
+import DonationList from './DonationPage/DonationList';
 import Footer from './Footer';
 
 const App = () => {
@@ -83,6 +84,7 @@ const App = () => {
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
                 <Route exact path="/donate" element={<DonationPage />} />
+                <Route exact path="/donation" element={<DonationList />} />
             </Routes>
             <Footer />
         </div>
