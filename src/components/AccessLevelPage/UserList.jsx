@@ -26,6 +26,17 @@ const ButtonLevelAccess = styled.button`
     }
 `;
 
+const UserName = styled.p`
+    color: #4D8E6B;
+    font-weight: bold;
+    margin-bottom: 0;
+`;
+
+const UserId = styled.p`
+    color: #4D8E6B;
+    margin-bottom: 0;
+`;
+
 function Article() {
 
     // const [loading, setLoading] = useState(true);
@@ -48,23 +59,24 @@ function Article() {
 
     return (
         <div className="row p-3 align-items-center">
-            <div className="col-1">
+            <div className="col-1 align-items-center">
                 <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input"/>
+                    <input type="checkbox" className="custom-control-input" style={{ width: '28px', height: '28px' }}/>
                 </div>
             </div>
             <div className="col-7">
-                How to Master Everything in 1 Year
+                <UserName>Fajar Muahammad Hamka</UserName>
+                <UserId>ID: 120291308129389</UserId>
             </div>
             <div className="col-4">
                 <div className="row align-items-center">
-                    <div className="col-4">
-                        <ButtonLevelAccess className='w-100 py-2'>Admin</ButtonLevelAccess>
+                    <div className="col-6">
+                        <ButtonLevelAccess className='w-100 py-2' style={{ fontWeight: 'bold' }}>Admin</ButtonLevelAccess>
                     </div>
-                    <div className="col-4 text-center">
+                    <div className="col-3 text-center">
                         <FaPencilAlt />
                     </div>
-                    <div className="col-4 text-center">
+                    <div className="col-3 text-center">
                         <FaTrash />
                     </div>
                 </div>
