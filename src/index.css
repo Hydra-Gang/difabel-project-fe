@@ -12,3 +12,17 @@ div.header {
 div.list {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+div.SearchBar {
+    margin-top: 72px;
+}
+
+a.HideAnimation {
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+}
+
+a.HideAnimation:hover {
+    color: white;
+}

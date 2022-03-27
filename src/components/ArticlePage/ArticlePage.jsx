@@ -6,6 +6,7 @@ const TitlePage = styled.h1`
     color: #01634B;
     font-size: 40px;
     font-weight: 700;
+    margin-top: 72px;
     margin-top: 37px;
 `;
 

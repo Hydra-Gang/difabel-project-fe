@@ -68,19 +68,19 @@ function ListLocation() {
     // }, []);
 
     return (
-        <div className="row p-3">
-            <div className="col-2 center-div">
+        <div className="row p-3 align-items-center">
+            <div className="col-2">
                 3/3/2022 00:00
             </div>
-            <div className="col-6 center-div">
+            <div className="col-6">
                 Cimahi, West Java
             </div>
             <div className="col-4">
-                <div className="row">
-                    <div className="col-6 center-div">
+                <div className="row align-items-center">
+                    <div className="col-6">
                         <ButtonDetails className='w-100 py-2'>See Details</ButtonDetails>
                     </div>
-                    <div className="col-6 center-div">
+                    <div className="col-6">
                         <ButtonApprove className='w-100 py-2'>Approve</ButtonApprove>
                     </div>
                 </div>
