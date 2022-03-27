@@ -13,6 +13,10 @@ div.list {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+div.SearchBar {
+    margin-top: 180px;
+}
+
 a.HideAnimation {
     text-decoration: none;
     color: white;

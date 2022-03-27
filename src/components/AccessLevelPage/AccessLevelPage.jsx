@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import '../../index.css';
 import { FaTrash } from 'react-icons/fa';
 import UserList from './UserList';
+import { Form, FormControl, Button } from 'react-bootstrap';
 
 const HeaderTable = styled.h1`
     color: #01634B;
@@ -15,9 +16,17 @@ const HeaderTable = styled.h1`
 const AccessLevelPage = () => {
     return (
         <div className="container">
-            <div className="row">
-            </div>
-            <div className="item-list w-75" style={{ float: 'none', margin: '0 auto' }}>
+            <div className="w-75 mx-auto SearchBar" style={{ float: 'none' }}>
+                <Form className="d-flex">
+                    <FormControl
+                        type="search"
+                        placeholder="Search User"
+                        className="me-2"
+                        aria-label="Search User"
+                        style={{ height: 50 }}
+                    />
+                    <Button variant="outline-success">Search</Button>
+                </Form>
                 <div className="row">
                     <div className="col-1">
                     </div>
