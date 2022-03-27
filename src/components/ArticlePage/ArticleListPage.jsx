@@ -11,13 +11,14 @@ const TitlePage = styled.h1`
     margin-bottom: 65px;
 `;
 
+
 const ArticleListPage = () => {
     return (
         <div className="container">
             <div className="row">
                 <TitlePage className="mb-5 text-center">ARTICLE LIST</TitlePage>
             </div>
-            <div className="item-list w-75" style={{ float: 'none', margin: '0 auto' }}>
+            <div className="w-75" style={{ float: 'none', margin: '0 auto' }}>
                 <div className="row header">
                     <div className="col-2">
                         Date
