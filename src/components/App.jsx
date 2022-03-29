@@ -11,6 +11,8 @@ import ArticlePost from './ArticlePage/ArticlePost';
 import ReportPage from './ReportPage/ReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
 import Footer from './Footer';
+import ContentHero from './ContentPage/ContentHero';
+import Map from './Map/Map';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -73,8 +75,10 @@ const App = () => {
 
     return (
         <div className="app">
-            <Header isAuthenticated={isAuthenticated} userFullName={userFullName} />
-            <Routes>
+            <Header /* isAuthenticated={isAuthenticated}*/ userFullName={userFullName} />
+            <ContentHero/>
+            <Map/>
+            {/* <Routes>
                 <Route exact path="/" element={<Index />} />
                 <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />} />
                 <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
@@ -83,7 +87,7 @@ const App = () => {
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
-            </Routes>
+            </Routes> */}
             <Footer />
         </div>
     );

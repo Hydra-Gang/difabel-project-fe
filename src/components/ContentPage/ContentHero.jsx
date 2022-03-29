@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../../index.css';
 
 const greenColor = '#01634B';
 

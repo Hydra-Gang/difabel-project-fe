@@ -1,26 +1,25 @@
 // import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
 
 const background = '#01634B';
 
 const NavbarFooter = styled.div`
     margin-top: 15%;
-    bottom: 0;
     width: 100%;
-    height: 350px;
     background-color: ${background};
     border-top: 1px solid #e2e2e2;
 `;
 
 const Logo = styled.img`
-    margin-top: 70px;
+    margin-top: 0px;
 `;
 
 const LinkText = styled.a`
-    margin-top: 100px;
     color: white;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
         cursor: pointer;
@@ -33,8 +32,73 @@ function Footer() {
 
     return (
         <NavbarFooter>
-            <div className='container'>
-                <div className='row'>
+            <div className='container py-5'>
+                <div className='row d-flex align-items-center'>
+                    <div className='col-lg-5'>
+                        <Logo src='assets/logo_footer.png' alt='logo'/>
+                        <div className='row'>
+                            <p className='copyright'>Copyright &copy; 2022, Difabel</p>
+                        </div>
+
+                        <div className='row slogan'>
+                            <p>Your reliable, accurate, and trusted <br/>difabel information</p>
+                        </div>
+                    </div>
+
+
+                    <div className='col-lg-2 col-sm-6'>
+                        <div className='row'>
+                            <LinkText href='http://www.google.com'>Dashboard</LinkText>
+                        </div>
+                        <div className='row mt-4'>
+                            <LinkText href='http://www.google.com'>Map</LinkText>
+                        </div>
+                    </div>
+
+                    <div className='col-lg-2 col-sm-6'>
+                        <div className='row'>
+                            <LinkText href='http://www.google.com'>Article</LinkText>
+                        </div>
+                        <div className='row mt-4'>
+                            <LinkText href='http://www.google.com'>Report</LinkText>
+                        </div>
+                    </div>
+
+                    <div className='col-lg-3 col-sm-12 text-center'>
+                        <div className='row'>
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaFacebook className='icon' />
+                                </LinkText>
+                            </div>
+
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaInstagram className='icon' />
+                                </LinkText>
+                            </div>
+
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaWhatsapp className='icon'/>
+                                </LinkText>
+                            </div>
+                        </div>
+
+                        <div className='row text-center'>
+                            <Button className='w-100 mt-3 btn btn-success'>CONTACT US</Button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </NavbarFooter>
+    );
+}
+
+export default Footer;
+
+/* <div className='row'>
                     <div className='col-lg-4 col-12'>
                         <Logo src='assets/logo_footer.png' alt='logo'/>
                         <p className='copyright'>Copyright © 2022, Difabel</p>
@@ -67,10 +131,4 @@ function Footer() {
                         <FaWhatsapp className='icon'/>
                     </LinkText>
 
-                </div>
-            </div>
-        </NavbarFooter>
-    );
-}
-
-export default Footer;
+                </div> */
