@@ -8,7 +8,7 @@ const Index = () => {
     return (
         <>
             <ContentHero />
-            <ContentArticle />
+            {/* <ContentArticle /> */}
             <Map widthMap="50vw" heightMap="50vh" />
             <ContentCarousel />
             <ContentReportPage />

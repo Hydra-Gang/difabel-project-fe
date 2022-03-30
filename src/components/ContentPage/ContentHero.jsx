@@ -61,7 +61,7 @@ function ContentHero() {
                         </div>
                     </div>
 
-                    <div className="col-lg-6 margin-content">
+                    <div className="col-lg-6 margin-content" style={{ marginTop: 150, marginBottom: '20%' }}>
                         <img src="assets/landing-page.png" alt="difabel" className="w-100 bg-primary"></img>
                     </div>
                 </div>
