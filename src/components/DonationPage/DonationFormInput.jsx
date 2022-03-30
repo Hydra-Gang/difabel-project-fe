@@ -10,7 +10,7 @@ const InputIcon = styled(Form.Label)`
 `;
 
 const DonationFormInput = ({ propKey, propName, iconName }) => {
-    const [data, setData] = useContext(FormInputContext);
+    const [data, setData, errors] = useContext(FormInputContext);
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -22,7 +22,7 @@ const DonationFormInput = ({ propKey, propName, iconName }) => {
             <Form.Label className="m-0 fw-bold">{propName}</Form.Label>
             <Form.Control type="text" className="bg-transparent ps-0 border-0 border-bottom rounded-0 d-inline" name={propKey} placeholder={`Enter your ${propName.toLowerCase()}`} value={data[propKey]} onChange={handleChange} />
             <InputIcon as={Form.Label} className="mt-1">{iconName}</InputIcon>
-            {/* {errors[propKey] && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{errors[propKey]}</div>} */}
+            {errors[propKey] && <div className="alert alert-success w-100 py-2 mb-2 m-auto float-lg-start text-start" role="alert">{errors[propKey]}</div>}
         </FormGroup>
     );
 };
