@@ -1,7 +1,8 @@
 // import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
-import { Button } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const background = '#01634B';
 
@@ -48,7 +49,8 @@ function Footer() {
 
                     <div className='col-lg-2 col-sm-6'>
                         <div className='row'>
-                            <LinkText href='http://www.google.com'>Dashboard</LinkText>
+                            {/* <Nav.Link as={Link} to="/dashboard" style={{ textColor: '#FFF' }} className="margin-left">Dashboard</Nav.Link> */}
+                            <LinkText href='/dashboard'>Dashboard</LinkText>
                         </div>
                         <div className='row mt-4'>
                             <LinkText href='http://www.google.com'>Map</LinkText>
