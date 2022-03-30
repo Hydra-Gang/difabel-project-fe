@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../index.css';
+import { Button } from 'react-bootstrap';
 
 const greenColor = '#01634B';
 
@@ -29,7 +30,6 @@ const ButtonFind = styled.button`
     text-decoration:none;
     text-shadow:0px 1px 0px #22ff00;
     text-align: left;
-    justify-content: start;
     margin-top: 19px;
 
     &:hover {
@@ -43,6 +43,8 @@ const ButtonFind = styled.button`
     }
 `;
 
+
+
 function ContentHero() {
     return (
         <>
@@ -53,8 +55,8 @@ function ContentHero() {
                             <div className="row">
                                 <Heading>YOUR RELIABLE, ACCURATE, AND TRUSTED DIFABLE INFORMATION</Heading>
                                 <DescriptionText>This website provides a variety of information and knowledge about people with disabilities. This website is also equipped with a map of the distribution of people with disabilities</DescriptionText>
-                                <div className="col-lg-4">
-                                    <ButtonFind>Find Difabel</ButtonFind>
+                                <div>
+                                    <ButtonFind as={ Button }>Find Difabel</ButtonFind>
                                 </div>
                             </div>
 
