@@ -25,7 +25,7 @@ const TitleArticle = styled.h5`
     width: 100%;
 `;
 
-const ArticleCard = () => {
+const ArticleCardLandingPage = () => {
 
     const [data, setData] = useState([]);
 
@@ -44,7 +44,7 @@ const ArticleCard = () => {
 
     return (
         <div className='d-flex flex-wrap'>
-            {data.map((item) => (
+            {data.slice(0, 3).map((item) => (
                 <div className="col-lg-4 col-md-6 col-12 mb-3" key={item.id}>
                     <Card className="border-0" style={{ borederRadius: '10px' }}>
                         <Body>
@@ -74,4 +74,4 @@ const ArticleCard = () => {
     );
 };
 
-export default ArticleCard;
+export default ArticleCardLandingPage;

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ArticleCard from './ArticleCard';
+import ArticleCardLandingPage from './ArticleCardLandingPage';
 
 const TitlePage = styled.h1`
     color: #01634B;
@@ -10,21 +11,18 @@ const TitlePage = styled.h1`
     margin-top: 37px;
 `;
 
-const ArticlePage = () => {
+const ArticleLandingPage = () => {
 
     return (
-        <div className="container">
+        <div className="container" style={{ marginTop: '5%', marginBottom: '20%' }}>
             <div className="row">
                 <TitlePage className="text-center">ARTICLE PAGE</TitlePage>
             </div>
             <div className="row">
-                <Link to='/article/add' className='btn d-block m-auto text-white' style={{ width: '150px', backgroundColor: '#01634B' }}>Add Article</Link>
-            </div>
-            <div className="row">
-                <ArticleCard />
+                <ArticleCardLandingPage />
             </div>
         </div>
     );
 };
 
-export default ArticlePage;
+export default ArticleLandingPage;
