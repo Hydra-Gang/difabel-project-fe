@@ -99,38 +99,3 @@ function Footer() {
 }
 
 export default Footer;
-
-/* <div className='row'>
-                    <div className='col-lg-4 col-12'>
-                        <Logo src='assets/logo_footer.png' alt='logo'/>
-                        <p className='copyright'>Copyright © 2022, Difabel</p>
-                        <p className='slogan'>Your reliable, accurate, and trusted difabel information</p>
-                    </div>
-
-                    <div className='col-lg-2 col-12'>
-                        <div className='row'>
-                            <LinkText href='http://www.google.com'>Dashboard</LinkText><br/>
-                            <LinkText style={{ marginTop: 20 }} href='http://www.yahoo.com'>Map</LinkText>
-                        </div>
-                    </div>
-
-                    <div className='col-lg-2 col-12'>
-                        <div className='row'>
-                            <LinkText href='http://www.google.com'>Article</LinkText><br/>
-                            <LinkText style={{ marginTop: 20 }} href='http://www.yahoo.com'>Report</LinkText>
-                        </div>
-                    </div>
-
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaFacebook className='icon' />
-                    </LinkText>
-
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaInstagram className='icon' />
-                    </LinkText>
-
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaWhatsapp className='icon'/>
-                    </LinkText>
-
-                </div> */

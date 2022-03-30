@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Heading = styled.h1`
     color: #01634B;
@@ -12,17 +13,22 @@ const Heading = styled.h1`
     font-size: 40px;
     font-weight: 700;
     text-align: center;
-    margin-top: 9%;
+    margin-top: 8%;
 `;
 
 const TextPopUp = styled.p`
     display: inline;
 `;
 
-function Map(props) {
 
+function Map(props) {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+
+    const directLink = () => {
+        navigate('/map/add');
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -82,6 +88,7 @@ function Map(props) {
                 <Button
                     style={{ backgroundColor: '#01634B', padding: 20 }}
                     className="w-75 center"
+                    onClick={directLink}
                 >
                     Add Difabel Location
                 </Button>
