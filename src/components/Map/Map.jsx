@@ -1,9 +1,10 @@
 import { Button } from 'react-bootstrap';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import difabelsData from './difabel-location.json';
+// import difabelsData from './difabel-location.json';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const Heading = styled.h1`
     color: #01634B;
@@ -11,7 +12,7 @@ const Heading = styled.h1`
     font-size: 40px;
     font-weight: 700;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 9%;
 `;
 
 const TextPopUp = styled.p`
@@ -19,41 +20,64 @@ const TextPopUp = styled.p`
 `;
 
 function Map(props) {
+
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const { data: response } = await axios.get('http://localhost:5000/v1/map/');
+                setData(response.data.locations);
+                console.log(response.data.locations);
+            } catch (error) {
+                console.error(error.message);
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
     const widthMap = props.widthMap;
     const heightMap = props.heightMap;
 
     return (
         <div className='container'>
             <Heading>DIFABEL MAP DISTRIBUTION</Heading>
-            <MapContainer
-                center={[-0.789275, 113.921326]}
-                zoom={4}
-                scrollWheelZoom={true}
-                style={{ width: widthMap, height: heightMap, margin: '5% auto' }}
-            >
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
+            {loading && <div>Loading....</div>}
+            {!loading && (
+                <MapContainer
+                    center={[-0.789275, 113.921326]}
+                    zoom={4}
+                    scrollWheelZoom={true}
+                    style={{ width: widthMap, height: heightMap, margin: '5% auto' }}
+                >
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {data.map((difabel) => (
+                        <Marker
+                            key={difabel.id}
+                            position={[difabel.latitude, difabel.longitude]}
+                        >
+                            <Popup position={[difabel.latitude, difabel.longitude]}>
+                                <div>
+                                    <h5>{`${difabel.name}`}</h5>
+                                    <TextPopUp>{`Type Difabel: ${difabel.type}`}</TextPopUp>
+                                    <br></br>
+                                    <TextPopUp>{`Address: ${difabel.address}`}</TextPopUp>
+                                </div>
+                            </Popup>
 
-                {difabelsData.map((difabel) => (
-                    <Marker
-                        key={difabel.id}
-                        position={[difabel.gps.latitude, difabel.gps.longitude]}
-                    >
-                        <Popup position={[difabel.gps.latitude, difabel.gps.longitude]}>
-                            <div>
-                                <h5>{`${difabel.name}`}</h5>
-                                <TextPopUp>{`Type Difabel: ${difabel.type}`}</TextPopUp>
-                                <br></br>
-                                <TextPopUp>{`Address: ${difabel.address}`}</TextPopUp>
-                            </div>
-                        </Popup>
+                        </Marker>
+                    ))}
 
-                    </Marker>
-                ))}
+                </MapContainer>
+            )}
 
-            </MapContainer>
             <div className='row'>
                 <Button
                     style={{ backgroundColor: '#01634B', padding: 20 }}

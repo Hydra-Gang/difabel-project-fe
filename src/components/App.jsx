@@ -11,6 +11,8 @@ import ArticlePost from './ArticlePage/ArticlePost';
 import ReportPage from './ReportPage/ReportPage';
 import ReportListPage from './ReportPage/ReportListPage';
 import Footer from './Footer';
+import ContentHero from './ContentPage/ContentHero';
+import Map from './Map/Map';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -83,8 +85,9 @@ const App = () => {
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
+                <Route exact path="/map" element={<Map widthMap="50vw" heightMap="80vh" />} />
             </Routes>
-            <Footer />
+            <Footer/>
         </div>
     );
 };
