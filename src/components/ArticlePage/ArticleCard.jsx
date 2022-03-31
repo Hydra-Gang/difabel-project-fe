@@ -55,12 +55,12 @@ const ArticleCard = () => {
                                         <img src="assets/user.png" alt="user"/>
                                     </div>
                                     <div className="col-10 ps-3">
-                                        <UserInfo>Master Alvian</UserInfo>
-                                        <UserInfo className="text-muted">5h ago</UserInfo>
+                                        <UserInfo>{item.author.fullName}</UserInfo>
+                                        <UserInfo className="text-muted">{item.createdAt}</UserInfo>
                                     </div>
                                 </div>
                             </UserArticle>
-                            <Card.Text className="mt-3 text-start">
+                            <Card.Text className="mt-3 text-start" style={{ height: 250, overflow: 'hidden' }}>
                                 <div style={{ backgroundColor: '#01634B', fontSize: '16px' }} className="p-3 rounded text-white text-start">
                                     {item.content}
                                 </div>
