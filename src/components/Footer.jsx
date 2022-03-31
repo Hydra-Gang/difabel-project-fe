@@ -1,26 +1,26 @@
 // import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { FaFacebook, FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { Button, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const background = '#01634B';
 
 const NavbarFooter = styled.div`
     margin-top: 15%;
-    bottom: 0;
     width: 100%;
-    height: 350px;
     background-color: ${background};
     border-top: 1px solid #e2e2e2;
 `;
 
 const Logo = styled.img`
-    margin-top: 70px;
+    margin-top: 0px;
 `;
 
 const LinkText = styled.a`
-    margin-top: 100px;
     color: white;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
         cursor: pointer;
@@ -33,41 +33,69 @@ function Footer() {
 
     return (
         <NavbarFooter>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-lg-4 col-12'>
+            <div className='container py-5'>
+                <div className='row d-flex align-items-center'>
+                    <div className='col-lg-5'>
                         <Logo src='assets/logo_footer.png' alt='logo'/>
-                        <p className='copyright'>Copyright © 2022, Difabel</p>
-                        <p className='slogan'>Your reliable, accurate, and trusted difabel information</p>
-                    </div>
-
-                    <div className='col-lg-2 col-12'>
                         <div className='row'>
-                            <LinkText href='http://www.google.com'>Dashboard</LinkText><br/>
-                            <LinkText style={{ marginTop: 20 }} href='http://www.yahoo.com'>Map</LinkText>
+                            <p className='copyright'>Copyright &copy; 2022, Difabel</p>
+                        </div>
+
+                        <div className='row slogan'>
+                            <p>Your reliable, accurate, and trusted <br/>difabel information</p>
                         </div>
                     </div>
 
-                    <div className='col-lg-2 col-12'>
+
+                    <div className='col-lg-2 col-sm-6'>
                         <div className='row'>
-                            <LinkText href='http://www.google.com'>Article</LinkText><br/>
-                            <LinkText style={{ marginTop: 20 }} href='http://www.yahoo.com'>Report</LinkText>
+                            <Nav.Link as={Link} to="/dashboard" style={{ color: '#FFF' }} className="center">Dashboard</Nav.Link>
+                            {/* <LinkText href='/dashboard'>Dashboard</LinkText> */}
+                        </div>
+                        <div className='row mt-4'>
+                            {/* <LinkText href='http://www.google.com'>Map</LinkText> */}
+                            <Nav.Link as={Link} to="/map" style={{ color: '#FFF' }} className="center">Map</Nav.Link>
                         </div>
                     </div>
 
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaFacebook className='icon' />
-                    </LinkText>
+                    <div className='col-lg-2 col-sm-6'>
+                        <div className='row'>
+                            {/* <LinkText href='http://www.google.com'>Article</LinkText> */}
+                            <Nav.Link as={Link} to="/article" style={{ color: '#FFF' }} className="center">Article</Nav.Link>
+                        </div>
+                        <div className='row mt-4'>
+                            {/* <LinkText href='http://www.google.com'>Report</LinkText> */}
+                            <Nav.Link as={Link} to="/report" style={{ color: '#FFF' }} className="center">Report</Nav.Link>
+                        </div>
+                    </div>
 
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaInstagram className='icon' />
-                    </LinkText>
+                    <div className='col-lg-3 col-sm-12 text-center'>
+                        <div className='row'>
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaFacebook className='icon' />
+                                </LinkText>
+                            </div>
 
-                    <LinkText className='col-lg-1 col-12' href="#">
-                        <FaWhatsapp className='icon'/>
-                    </LinkText>
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaInstagram className='icon' />
+                                </LinkText>
+                            </div>
 
+                            <div className='col-lg-4 col-sm-4 mt-4'>
+                                <LinkText href="#">
+                                    <FaWhatsapp className='icon'/>
+                                </LinkText>
+                            </div>
+                        </div>
+
+                        <div className='row text-center'>
+                            <Button className='w-100 mt-3 btn btn-success'>CONTACT US</Button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </NavbarFooter>
     );

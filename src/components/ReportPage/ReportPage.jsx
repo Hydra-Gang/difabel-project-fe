@@ -25,8 +25,27 @@ const ReportInfo = styled.h5`
     margin-bottom: 12px;
 `;
 
+const ReportContent = styled.textarea`
+    color: #FFFFFF; 
+    text-align: left;
+    width: 100%;
+    background-color: #88D4AB;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 0;
+`;
+
+const ButtonSubmit = styled.button`
+    color: #FFFFFF;
+    background-color: #01634B;
+    border-radius: 10px;
+    width: 100%;
+    border: 0;
+`;
+
 const sendReport = (data) => {
-    axios.post('http://localhost:3000/v1/reports/add', data)
+    axios.post('http://localhost:5000/v1/reports/add', data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 };
@@ -36,6 +55,38 @@ const ReportPage = () => {
     const [data, setData] = useState({
         content: ''
     });
+
+    const Change = (e) => {
+        const value = e.target.value;
+        setData({
+            ...data,
+            [e.target.name]: value
+        });
+    };
+
+    const Submit = (e) => {
+        console.log(data.content);
+        e.preventDefault();
+        const userData = {
+            content: data.content
+        };
+        axios
+            .post('http://localhost:5000/v1/reports/add', userData)
+            .then((response) => {
+                console.log(response);
+                setData([]);
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                    console.log('server responded');
+                } else if (error.request) {
+                    console.log('network error');
+                } else {
+                    console.log(error);
+                }
+            });
+    };
 
     return (
         <div className="container">
@@ -50,10 +101,17 @@ const ReportPage = () => {
                                 <ReportInfo><img src="assets/happy.png" style={{ marginRight: '14px' }} alt="happy"/>Tell us what’s your problem</ReportInfo>
                             </div>
                         </div>
-                        <form action="">
-                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="6"></textarea>
+                        <form>
+                            <ReportContent
+                                placeholder="Enter yout report"
+                                type="content"
+                                name="content"
+                                value={data.content}
+                                onChange={Change}
+                                rows="6">
+                            </ReportContent>
 
-                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100 border-0" onClick={() => sendReport(data)}>Send Report</button>
+                            <ButtonSubmit onClick={Submit}>Send Report</ButtonSubmit>
                         </form>
                     </Body>
                 </Card>

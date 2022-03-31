@@ -25,7 +25,7 @@ const TitleArticle = styled.h5`
     width: 100%;
 `;
 
-const ArticleCard = () => {
+const ArticleCardLandingPage = () => {
 
     const [data, setData] = useState([]);
 
@@ -44,7 +44,7 @@ const ArticleCard = () => {
 
     return (
         <div className='d-flex flex-wrap'>
-            {data.map((item) => (
+            {data.slice(0, 3).map((item) => (
                 <div className="col-lg-4 col-md-6 col-12 mb-3" key={item.id}>
                     <Card className="border-0" style={{ borederRadius: '10px' }}>
                         <Body>
@@ -55,12 +55,12 @@ const ArticleCard = () => {
                                         <img src="assets/user.png" alt="user"/>
                                     </div>
                                     <div className="col-10 ps-3">
-                                        <UserInfo>{item.author.fullName}</UserInfo>
-                                        <UserInfo className="text-muted">{item.createdAt}</UserInfo>
+                                        <UserInfo>Master Alvian</UserInfo>
+                                        <UserInfo className="text-muted">5h ago</UserInfo>
                                     </div>
                                 </div>
                             </UserArticle>
-                            <Card.Text className="mt-3 text-start" style={{ height: 250, overflow: 'hidden' }}>
+                            <Card.Text className="mt-3 text-start">
                                 <div style={{ backgroundColor: '#01634B', fontSize: '16px' }} className="p-3 rounded text-white text-start">
                                     {item.content}
                                 </div>
@@ -74,4 +74,4 @@ const ArticleCard = () => {
     );
 };
 
-export default ArticleCard;
+export default ArticleCardLandingPage;

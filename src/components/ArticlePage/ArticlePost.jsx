@@ -20,7 +20,7 @@ const Title = styled.h5`
 `;
 
 const sendReport = (data) => {
-    axios.post('http://localhost:3000/v1/articles', data)
+    axios.post('http://localhost:5000/v1/articles', data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 };
@@ -43,9 +43,20 @@ const ArticlePost = () => {
                         <Title className="mb-3 text-center">ADD ARTICLE PAGE</Title>
                         <Body>
                             <form action="">
-                                <Form.Control type="text" style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="mb-3" value={data.title} onChange={(e) => setData({ ...data, content: e.target.value })} placeholder="Enter your title" />
+                                <Form.Control type="text"
+                                    style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }}
+                                    className="mb-3" value={data.title}
+                                    onChange={(e) => setData({ ...data, title: e.target.value })}
+                                    placeholder="Enter your title" />
 
-                                <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout content" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="4"></textarea>
+                                <textarea
+                                    style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }}
+                                    className="form-control mb-3"
+                                    placeholder="Enter yout content"
+                                    id="content" value={data.content}
+                                    onChange={(e) => setData({ ...data, content: e.target.value })}
+                                    rows="4">
+                                </textarea>
 
                                 <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="btn w-100 mb-2" onClick={() => sendReport(data)}>Request post approval</button>
 

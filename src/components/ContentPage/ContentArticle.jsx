@@ -18,8 +18,6 @@ function ContentArticle() {
             <Heading>ARTICLE PAGE</Heading>
             <div className="row">
                 <ArticleCard />
-                <ArticleCard />
-                <ArticleCard />
             </div>
             <div className='row'>
                 <Button style={{ backgroundColor: '#01634B', padding: 10 }} className="w-75 center">See All Article</Button>
@@ -27,5 +25,7 @@ function ContentArticle() {
         </div>
     );
 }
+
+
 
 export default ContentArticle;

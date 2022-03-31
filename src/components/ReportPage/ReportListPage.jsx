@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axios-instance';
 import styled from '@emotion/styled';
 
 const Heading = styled.h1`
@@ -24,22 +24,69 @@ const ListReport = styled.p`
 // http://localhost:5000/v1/reports/
 
 function ReportListPage() {
-    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const { data: response } = await axios.get('http://localhost:5000/v1/reports/');
-                setData(response.data.reports);
-            } catch (error) {
-                console.error(error.message);
+        const refreshSession = async (refreshToken) => {
+            const authHeader = {
+                Authorization: `Bearer ${refreshToken}`
+            };
+
+            let isRefreshFail = true;
+            if (refreshToken) {
+                try {
+                    const { data: res } = await axios.post('/auth/refresh', {}, { headers: authHeader });
+                    const newAccessToken = res.data.accessToken;
+
+                    const newToken = {
+                        accessToken: newAccessToken,
+                        refreshToken: refreshToken
+                    };
+
+                    localStorage.setItem('difabel', JSON.stringify(newToken));
+                    isRefreshFail = false;
+                } catch (err) {
+                    // do nothing
+                }
             }
-            setLoading(false);
+
+            if (isRefreshFail) {
+                localStorage.removeItem('difabel');
+                setIsAuthenticated(false);
+            }
         };
 
-        fetchData();
+        const fetchReports = async () => {
+            const rawToken = localStorage.getItem('difabel');
+
+            if (rawToken) {
+                const token = JSON.parse(rawToken);
+
+                if (!token.accessToken) {
+                    setIsAuthenticated(false);
+                    return;
+                }
+
+                const authHeader = {
+                    Authorization: `Bearer ${token.accessToken}`
+                };
+
+                try {
+                    const { data: res } = await axios.get('/reports', { headers: authHeader });
+                    const { reports } = res.data;
+                    setData((reports));
+                    setLoading(false);
+                    console.log(reports);
+                    console.log(data);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+        };
+
+        fetchReports();
     }, []);
 
     return (

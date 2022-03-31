@@ -11,7 +11,6 @@ const TitlePage = styled.h1`
     margin-bottom: 65px;
 `;
 
-
 const ArticleListPage = () => {
     return (
         <div className="container">
