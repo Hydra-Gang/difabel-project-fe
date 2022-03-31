@@ -49,20 +49,23 @@ function Footer() {
 
                     <div className='col-lg-2 col-sm-6'>
                         <div className='row'>
-                            {/* <Nav.Link as={Link} to="/dashboard" style={{ textColor: '#FFF' }} className="margin-left">Dashboard</Nav.Link> */}
-                            <LinkText href='/dashboard'>Dashboard</LinkText>
+                            <Nav.Link as={Link} to="/dashboard" style={{ color: '#FFF' }} className="center">Dashboard</Nav.Link>
+                            {/* <LinkText href='/dashboard'>Dashboard</LinkText> */}
                         </div>
                         <div className='row mt-4'>
-                            <LinkText href='http://www.google.com'>Map</LinkText>
+                            {/* <LinkText href='http://www.google.com'>Map</LinkText> */}
+                            <Nav.Link as={Link} to="/map" style={{ color: '#FFF' }} className="center">Map</Nav.Link>
                         </div>
                     </div>
 
                     <div className='col-lg-2 col-sm-6'>
                         <div className='row'>
-                            <LinkText href='http://www.google.com'>Article</LinkText>
+                            {/* <LinkText href='http://www.google.com'>Article</LinkText> */}
+                            <Nav.Link as={Link} to="/article" style={{ color: '#FFF' }} className="center">Article</Nav.Link>
                         </div>
                         <div className='row mt-4'>
-                            <LinkText href='http://www.google.com'>Report</LinkText>
+                            {/* <LinkText href='http://www.google.com'>Report</LinkText> */}
+                            <Nav.Link as={Link} to="/report" style={{ color: '#FFF' }} className="center">Report</Nav.Link>
                         </div>
                     </div>
 

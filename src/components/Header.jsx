@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Navbar, Button, Container, Nav, Dropdown, Form } from 'react-bootstrap';
-import { FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaSignOutAlt, FaUser, FaEdit } from 'react-icons/fa';
 import axios from '../axios-instance';
+import styled from '@emotion/styled';
 
 const image = 'assets/Logo.png';
 const whiteColor = 'white';
@@ -73,6 +74,11 @@ function Header({ isAuthenticated, userFullName }) {
                                 <Button className="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" variant="green"><FaUser /> {userFullName}</Button>
                                 <ul className="dropdown-menu bg-transparent p-0" aria-labelledby="dropdownMenuButton">
                                     <Form>
+                                        <li>
+                                            <Nav.Link as={Link} to="/profile">
+                                                <Button variant="white" className='p-0'> <FaEdit/> Profile</Button>
+                                            </Nav.Link>
+                                        </li>
                                         <li><Button type="submit" className="dropdown-item py-2 rounded" variant="green" onClick={logout}><FaSignOutAlt /> Logout</Button></li>
                                     </Form>
                                 </ul>

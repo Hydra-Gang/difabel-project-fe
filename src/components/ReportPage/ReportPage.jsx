@@ -26,7 +26,7 @@ const ReportInfo = styled.h5`
 `;
 
 const sendReport = (data) => {
-    axios.post('http://localhost:3000/v1/reports/add', data)
+    axios.post('http://localhost:5000/v1/reports/add', data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 };
@@ -51,9 +51,16 @@ const ReportPage = () => {
                             </div>
                         </div>
                         <form action="">
-                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="6"></textarea>
+                            <textarea
+                                style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }}
+                                className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content}
+                                onChange={(e) => setData({ ...data, content: e.target.value })} rows="6">
+                            </textarea>
 
-                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100 border-0" onClick={() => sendReport(data)}>Send Report</button>
+                            <button type="submit"
+                                style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }}
+                                className="w-100 border-0"
+                                onClick={() => sendReport(data)}>Send Report</button>
                         </form>
                     </Body>
                 </Card>

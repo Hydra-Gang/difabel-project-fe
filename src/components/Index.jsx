@@ -4,6 +4,7 @@ import Map from './Map/Map';
 import ContentCarousel from './ContentCarousel';
 import ContentReportPage from './ContentPage/ContentReportPage';
 import ArticleLandingPage from './ArticlePage/ArticleLandingPage';
+import ReportListPage from './ReportPage/ReportListPage';
 
 const Index = () => {
     return (
