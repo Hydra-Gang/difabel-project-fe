@@ -18,7 +18,7 @@ const ArticlePage = () => {
                 <TitlePage className="text-center">ARTICLE PAGE</TitlePage>
             </div>
             <div className="row">
-                <Link to='/article/add' className='btn d-block m-auto text-white' style={{ width: '150px', backgroundColor: '#01634B' }}>Add Article</Link>
+                <Link to='/article/add' className='btn d-block m-auto text-white mb-3' style={{ width: '150px', backgroundColor: '#01634B' }}>Add Article</Link>
             </div>
             <div className="row">
                 <ArticleCard />
