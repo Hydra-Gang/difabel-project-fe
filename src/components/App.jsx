@@ -16,6 +16,7 @@ import Footer from './Footer';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [userAccessLevel, setUserAccessLevel] = useState();
     const [userFullName, setUserFullName] = useState('');
 
     useEffect(() => {
@@ -57,7 +58,8 @@ const App = () => {
                             'Authorization': `Bearer ${accessToken}`
                         }
                     }).then((res) => {
-                        const { fullName } = res.data.data.user;
+                        const { accessLevel, fullName } = res.data.data.user;
+                        setUserAccessLevel(accessLevel);
                         setUserFullName(fullName);
                     }).catch(() => {
                         getNewAccessToken(token);
@@ -86,7 +88,7 @@ const App = () => {
                 <Route exact path="/report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/login" />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
                 <Route exact path="/donate" element={<DonationPage />} />
-                <Route exact path="/donation" element={<DonationList />} />
+                <Route exact path="/donation" element={<DonationList userAccessLevel={userAccessLevel} />} />
             </Routes>
             <Footer />
         </div>
