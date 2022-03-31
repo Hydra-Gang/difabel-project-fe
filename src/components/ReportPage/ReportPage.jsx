@@ -45,7 +45,7 @@ const ButtonSubmit = styled.button`
 `;
 
 const sendReport = (data) => {
-    axios.post('http://localhost:3000/v1/reports/add', data)
+    axios.post('http://localhost:5000/v1/reports/add', data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
 };
