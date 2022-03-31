@@ -32,8 +32,21 @@ const ArticleCard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: response } = await axios.get('http://localhost:5000/v1/articles/');
-                setData(response.data.articles);
+                const token = localStorage.getItem('difabel');
+
+                if (token) {
+                    const accessToken = JSON.parse(token).accessToken;
+
+                    if (accessToken) {
+                        const { data: response } = await axios.get('http://localhost:5000/v1/articles/', {
+                            headers: {
+                                'Authorization': `Bearer ${accessToken}`
+                            }
+                        });
+
+                        setData(response.data.articles);
+                    }
+                }
             } catch (error) {
                 console.error(error.message);
             }
@@ -52,7 +65,7 @@ const ArticleCard = () => {
                             <UserArticle>
                                 <div className="row">
                                     <div className="col-2">
-                                        <img src="assets/user.png" alt="user"/>
+                                        <img src="/assets/user.png" alt="User" />
                                     </div>
                                     <div className="col-10 ps-3">
                                         <UserInfo>{item.author.fullName}</UserInfo>
