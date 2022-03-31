@@ -1,7 +1,8 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import LoginForm from './LoginForm';
 
-const LoginPage = () => {
+const LoginPage = ({ setIsAuthenticated, setUserFullName }) => {
     return (
         <Container>
             <Row className="min-vh-100 d-flex align-items-center pb-5">
@@ -10,11 +11,16 @@ const LoginPage = () => {
                 </Col>
                 <Col lg={6}>
                     <h2 className="mb-3 fw-bold text-lg-start text-center" style={{ color: '#01634B' }}>LOGIN PAGE</h2>
-                    <LoginForm />
+                    <LoginForm setIsAuthenticated={setIsAuthenticated} setUserFullName={setUserFullName} />
                 </Col>
             </Row>
         </Container>
     );
+};
+
+LoginPage.propTypes = {
+    setIsAuthenticated: PropTypes.func,
+    setUserFullName: PropTypes.func
 };
 
 export default LoginPage;

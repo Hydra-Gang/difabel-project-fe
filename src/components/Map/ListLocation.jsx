@@ -47,7 +47,7 @@ const ButtonApprove = styled.button`
     }
 `;
 
-function Article() {
+function ListLocation() {
 
     // const [loading, setLoading] = useState(true);
     // const [data, setData] = useState([]);
@@ -73,7 +73,7 @@ function Article() {
                 3/3/2022 00:00
             </div>
             <div className="col-6">
-                How to Master Everything in 1 Year
+                Cimahi, West Java
             </div>
             <div className="col-4">
                 <div className="row align-items-center">
@@ -89,4 +89,4 @@ function Article() {
     );
 }
 
-export default Article;
+export default ListLocation;

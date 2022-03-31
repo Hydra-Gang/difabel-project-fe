@@ -19,7 +19,6 @@ const TextPopUp = styled.p`
 `;
 
 function Map(props) {
-    console.log(props);
     const widthMap = props.widthMap;
     const heightMap = props.heightMap;
 
@@ -60,7 +59,7 @@ function Map(props) {
                     style={{ backgroundColor: '#01634B', padding: 20 }}
                     className="w-75 center"
                 >
-                Add Difabel Location
+                    Add Difabel Location
                 </Button>
             </div>
         </div>
