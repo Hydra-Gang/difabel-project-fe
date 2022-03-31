@@ -7,7 +7,7 @@ import AccessLevelPage from './AccessLevelPage/AccessLevelPage';
 
 const Dashboard = () => {
     return (
-        <div className="dashboard">
+        <div className="container dashboard">
             {/* <ReportListPage />
             <DifabelLocationListPage />
             <ArticleListPage/>
