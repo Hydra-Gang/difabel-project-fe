@@ -13,7 +13,6 @@ import ReportListPage from './ReportPage/ReportListPage';
 import DonationPage from './DonationPage/DonationPage';
 import DonationList from './DonationPage/DonationList';
 import Footer from './Footer';
-import ContentHero from './ContentPage/ContentHero';
 import Map from './Map/Map';
 import MapPost from './Map/MapPost';
 import Profile from './Profile/Profile';
