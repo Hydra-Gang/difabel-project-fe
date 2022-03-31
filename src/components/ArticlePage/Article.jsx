@@ -49,38 +49,38 @@ const ButtonApprove = styled.button`
 
 function Article() {
 
-    // const [loading, setLoading] = useState(true);
-    // const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         setLoading(true);
-    //         try {
-    //             const { data: response } = await axios.get('http://localhost:5000/v1/reports/');
-    //             setData(response.data.reports);
-    //         } catch (error) {
-    //             console.error(error.message);
-    //         }
-    //         setLoading(false);
-    //     };
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const { data: response } = await axios.get('http://localhost:5000/v1/reports/');
+                setData(response.data.reports);
+            } catch (error) {
+                console.error(error.message);
+            }
+            setLoading(false);
+        };
 
-    //     fetchData();
-    // }, []);
+        fetchData();
+    }, []);
 
     return (
-        <div className="row p-3 align-items-center">
-            <div className="col-2">
+        <div className="row p-3">
+            <div className="col-2 center-div">
                 3/3/2022 00:00
             </div>
-            <div className="col-6">
+            <div className="col-6 center-div">
                 How to Master Everything in 1 Year
             </div>
             <div className="col-4">
-                <div className="row align-items-center">
-                    <div className="col-6">
+                <div className="row">
+                    <div className="col-6 center-div">
                         <ButtonDetails className='w-100 py-2'>See Details</ButtonDetails>
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 center-div">
                         <ButtonApprove className='w-100 py-2'>Approve</ButtonApprove>
                     </div>
                 </div>

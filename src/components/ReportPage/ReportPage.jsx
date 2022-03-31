@@ -40,7 +40,7 @@ const ReportPage = () => {
     return (
         <div className="container">
             <div className="row">
-                <TitlePage className="mb-3 text-center">REPORT PAGE</TitlePage>
+                <TitlePage className="mb-3">REPORT PAGE</TitlePage>
             </div>
             <div className="row">
                 <Card className="border-0 w-50" style={{ float: 'none', margin: '0 auto' }}>
@@ -51,9 +51,16 @@ const ReportPage = () => {
                             </div>
                         </div>
                         <form action="">
-                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="6"></textarea>
+                            <textarea style={{ color: 'white', textAlign: 'left', backgroundColor: '#88D4AB', borderRadius: '10px' }} className="form-control mb-3" placeholder="Enter yout report" id="content" value={data.content} onChange={(e) => setData({ ...data, content: e.target.value })} rows="4"></textarea>
 
-                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100 border-0" onClick={() => sendReport(data)}>Send Report</button>
+                            <select style={{ color: 'white', backgroundColor: '#56AB91', borderRadius: '10px' }} className="form-control mb-3" placeholder="Choose your report type" id="typeReport">
+                                <option style={{ textAlign: 'left' }}>Cheat</option>
+                                <option style={{ textAlign: 'left' }}>Abusing</option>
+                                <option style={{ textAlign: 'left' }}>Toxic</option>
+                                <option style={{ textAlign: 'left' }}>AFK</option>
+                                <option style={{ textAlign: 'left' }}>Leaving Game</option>
+                            </select>
+                            <button type="submit" style={{ color: 'white', backgroundColor: '#01634B', borderRadius: '10px' }} className="w-100" onClick={() => sendReport(data)}>Send Report</button>
                         </form>
                     </Body>
                 </Card>
