@@ -1,28 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Navbar, Button, Container, Nav, Dropdown, Form } from 'react-bootstrap';
-import { FaSignOutAlt, FaUser } from 'react-icons/fa';
-import axios from '../axios-instance';
+import { Navbar, Button, Container, Nav } from 'react-bootstrap';
 
 const image = 'assets/Logo.png';
 const whiteColor = 'white';
 const greenColor = '#01634B';
 
-function Header({ isAuthenticated, userFullName }) {
-    const logout = () => {
-        const token = localStorage.getItem('difabel');
-        const { refreshToken } = JSON.parse(token);
-
-        axios.delete('/auth/logout', {}, {
-            headers: {
-                'Authorization': `Bearer ${refreshToken}`
-            }
-        });
-
-        localStorage.removeItem('difabel');
-    };
-
+function Header() {
     return (
         <>
             <style type="text/css">
@@ -55,38 +38,26 @@ function Header({ isAuthenticated, userFullName }) {
 
             <Navbar collapseOnSelect expand="lg">
                 <Container>
-                    <Navbar.Brand as={Link} to="/">
+                    <Navbar.Brand href="#home">
                         <img src={image} alt="Logo" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/dashboard" className="bold margin-left">Dashboard</Nav.Link>
-                            <Nav.Link as={Link} to="/map" className="bold margin-left">Map</Nav.Link>
-                            <Nav.Link as={Link} to="/article" className="bold margin-left">Article</Nav.Link>
-                            <Nav.Link as={Link} to="/report" className="bold margin-left">Report</Nav.Link>
-                            <Nav.Link as={Link} to="/donate" className="bold margin-left">Donate</Nav.Link>
+                            <Nav.Link href="#features" className="bold margin-left">Dashboard</Nav.Link>
+                            <Nav.Link href="#map" className="bold margin-left">Map</Nav.Link>
+                            <Nav.Link href="#forum" className="bold margin-left">Article</Nav.Link>
+                            <Nav.Link href="#report" className="bold margin-left">Report</Nav.Link>
+                            <Nav.Link href="#report" className="bold margin-left">Donate</Nav.Link>
                         </Nav>
-
-                        {isAuthenticated ? (
-                            <Dropdown>
-                                <Button className="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" variant="green"><FaUser /> {userFullName}</Button>
-                                <ul className="dropdown-menu bg-transparent p-0" aria-labelledby="dropdownMenuButton">
-                                    <Form>
-                                        <li><Button type="submit" className="dropdown-item py-2 rounded" variant="green" onClick={logout}><FaSignOutAlt /> Logout</Button></li>
-                                    </Form>
-                                </ul>
-                            </Dropdown>
-                        ) : (
-                            <Nav>
-                                <Nav.Link as={Link} to="/register">
-                                    <Button variant="white">Register</Button>
-                                </Nav.Link>
-                                <Nav.Link as={Link} to="/login" eventKey={2}>
-                                    <Button variant="green">Login</Button>{' '}
-                                </Nav.Link>
-                            </Nav>
-                        )}
+                        <Nav>
+                            <Nav.Link href="#signup">
+                                <Button variant="white">Register</Button>
+                            </Nav.Link>
+                            <Nav.Link eventKey={2} href="#memes">
+                                <Button variant="green">Login</Button>{' '}
+                            </Nav.Link>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -94,10 +65,5 @@ function Header({ isAuthenticated, userFullName }) {
 
     );
 }
-
-Header.propTypes = {
-    isAuthenticated: PropTypes.bool,
-    userFullName: PropTypes.string
-};
 
 export default Header;
