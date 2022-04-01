@@ -55,8 +55,8 @@ const ArticleCardLandingPage = () => {
                                         <img src="assets/user.png" alt="user"/>
                                     </div>
                                     <div className="col-10 ps-3">
-                                        <UserInfo>Master Alvian</UserInfo>
-                                        <UserInfo className="text-muted">5h ago</UserInfo>
+                                        <UserInfo>{item.author.fullName}</UserInfo>
+                                        <UserInfo className="text-muted">{item.createdAt}</UserInfo>
                                     </div>
                                 </div>
                             </UserArticle>

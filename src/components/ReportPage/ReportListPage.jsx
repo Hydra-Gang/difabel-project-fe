@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../axios-instance';
 import styled from '@emotion/styled';
+import { Col, Row } from 'react-bootstrap';
 
 const Heading = styled.h1`
     color: #01634B;
@@ -19,6 +20,19 @@ const ListReport = styled.p`
     padding: 0px 5%;
     margin-left: auto;
     position: relative;
+`;
+
+const TableHeader = styled(Row)`
+    background-color: #56AB91;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+`;
+
+const TableBody = styled.div`
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
 // http://localhost:5000/v1/reports/
@@ -94,15 +108,26 @@ function ReportListPage() {
             <Heading>REPORT LIST</Heading>
             {loading && <div>Wait....</div>}
             {!loading && (
-                <div>
-                    {data.map((item) => (
-                        <div key={item.id}>
-                            <ListReport> <input type="checkbox"></input> </ListReport>
-                            <ListReport>{item.createdAt}</ListReport>
-                            <ListReport>{`${item.content.substring(0, 30)}`}</ListReport>
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <TableHeader as={Row} className="w-75 p-2 m-auto mt-4">
+                        <Col xs={4}>Date</Col>
+                        <Col xs={6}>Content</Col>
+                        <Col xs={2}>Status</Col>
+                    </TableHeader>
+                    <TableBody className="w-75 p-2 m-auto">
+                        {
+                            data?.map((item) => {
+                                return (
+                                    <Row key={item.id} className="p-2">
+                                        <Col xs={4}>{item.createdAt}</Col>
+                                        <Col xs={6}>{`${item.content.substring(0, 30)}`}</Col>
+                                        <Col xs={2}> <input type="checkbox"></input> </Col>
+                                    </Row>
+                                );
+                            })
+                        }
+                    </TableBody>
+                </>
             )}
         </div>
     );
