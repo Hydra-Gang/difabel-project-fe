@@ -56,12 +56,15 @@ const ReportPage = () => {
         content: ''
     });
 
+    const [text, setText] = useState('');
+
     const Change = (e) => {
         const value = e.target.value;
         setData({
             ...data,
             [e.target.name]: value
         });
+        setText(e.target.value);
     };
 
     const Submit = (e) => {
@@ -74,6 +77,7 @@ const ReportPage = () => {
             .post('http://localhost:5000/v1/reports/add', userData)
             .then((response) => {
                 console.log(response);
+                setText('');
                 setData([]);
             })
             .catch((error) => {
@@ -106,7 +110,7 @@ const ReportPage = () => {
                                 placeholder="Enter yout report"
                                 type="content"
                                 name="content"
-                                value={data.content}
+                                value={text}
                                 onChange={Change}
                                 rows="6">
                             </ReportContent>
