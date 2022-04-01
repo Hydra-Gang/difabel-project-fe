@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../axios-instance';
 import styled from '@emotion/styled';
 import { Col, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Heading = styled.h1`
     color: #01634B;
@@ -41,6 +42,7 @@ function ReportListPage() {
     const [data, setData] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(true);
     const [loading, setLoading] = useState(true);
+    const [checked, setChecked] = useState(true);
 
     useEffect(() => {
         const refreshSession = async (refreshToken) => {
@@ -92,8 +94,6 @@ function ReportListPage() {
                     const { reports } = res.data;
                     setData((reports));
                     setLoading(false);
-                    console.log(reports);
-                    console.log(data);
                 } catch (err) {
                     console.error(err);
                 }
@@ -102,6 +102,41 @@ function ReportListPage() {
 
         fetchReports();
     }, []);
+
+    function handleChange(event, id, index) {
+        setChecked((value) => !value);
+        console.log(id);
+        console.log(checked);
+        console.log(data);
+
+        if (checked === true) {
+            const rawToken = localStorage.getItem('difabel');
+
+            if (rawToken) {
+                const token = JSON.parse(rawToken);
+
+                if (!token.accessToken) {
+                    setIsAuthenticated(false);
+                    return;
+                }
+
+                const authHeader = {
+                    Authorization: `Bearer ${token.accessToken}`
+                };
+                console.log(token);
+                axios.put(`/reports/status/${id}`, {}, { headers: authHeader })
+                    .then((res) => {
+                        console.log('Update berhasil');
+                        const updatedItemData = [...data];
+                        updatedItemData.splice(index, 1);
+                        setData(updatedItemData);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    });
+            }
+        }
+    }
 
     return (
         <div className='container'>
@@ -116,13 +151,18 @@ function ReportListPage() {
                     </TableHeader>
                     <TableBody className="w-75 p-2 m-auto">
                         {
-                            data?.map((item) => {
+                            data?.map((item, index) => {
+                                const { status } = item;
                                 return (
-                                    <Row key={item.id} className="p-2">
-                                        <Col xs={4}>{item.createdAt}</Col>
-                                        <Col xs={6}>{`${item.content.substring(0, 30)}`}</Col>
-                                        <Col xs={2}> <input type="checkbox"></input> </Col>
-                                    </Row>
+                                    <>
+                                        {status === 0 &&
+                                            <Row key={item.id} className="p-2">
+                                                <Col xs={4}>{item.createdAt}</Col>
+                                                <Col xs={6}>{`${item.content.substring(0, 30)}`}</Col>
+                                                <Col xs={2} value={checked} onChange={(e) => handleChange(e, item.id, index)}><input type="checkbox"></input></Col>
+                                            </Row>
+                                        }
+                                    </>
                                 );
                             })
                         }
