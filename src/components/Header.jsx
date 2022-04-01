@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import { Navbar, Button, Container, Nav, Dropdown, Form } from 'react-bootstrap';
 import { FaSignOutAlt, FaUser, FaEdit } from 'react-icons/fa';
 import axios from '../axios-instance';
-import styled from '@emotion/styled';
 
-const image = 'assets/Logo.png';
+const image = '/assets/Logo.png';
 const whiteColor = 'white';
 const greenColor = '#01634B';
 
 function Header({ isAuthenticated, userFullName }) {
-    const logout = () => {
+    const logout = (e) => {
+        e.preventDefault();
+
         const token = localStorage.getItem('difabel');
         const { refreshToken } = JSON.parse(token);
 

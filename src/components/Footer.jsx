@@ -36,7 +36,7 @@ function Footer() {
             <div className='container py-5'>
                 <div className='row d-flex align-items-center'>
                     <div className='col-lg-5'>
-                        <Logo src='assets/logo_footer.png' alt='logo'/>
+                        <Logo src='/assets/logo_footer.png' alt='logo'/>
                         <div className='row'>
                             <p className='copyright'>Copyright &copy; 2022, Difabel</p>
                         </div>

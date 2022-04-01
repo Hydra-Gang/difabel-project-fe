@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Card, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const Body = styled.div`
     padding: 28px 25px 27px 25px;
@@ -32,8 +33,21 @@ const ArticleCard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: response } = await axios.get('http://localhost:5000/v1/articles/');
-                setData(response.data.articles);
+                const token = localStorage.getItem('difabel');
+
+                if (token) {
+                    const accessToken = JSON.parse(token).accessToken;
+
+                    if (accessToken) {
+                        const { data: response } = await axios.get('http://localhost:5000/v1/articles/', {
+                            headers: {
+                                'Authorization': `Bearer ${accessToken}`
+                            }
+                        });
+
+                        setData(response.data.articles);
+                    }
+                }
             } catch (error) {
                 console.error(error.message);
             }
@@ -46,13 +60,13 @@ const ArticleCard = () => {
         <div className='d-flex flex-wrap'>
             {data.map((item) => (
                 <div className="col-lg-4 col-md-6 col-12 mb-3" key={item.id}>
-                    <Card className="border-0" style={{ borederRadius: '10px' }}>
+                    <Card className="border-0 mx-2" style={{ borderRadius: '10px' }}>
                         <Body>
                             <TitleArticle>{item.title}</TitleArticle>
                             <UserArticle>
                                 <div className="row">
                                     <div className="col-2">
-                                        <img src="assets/user.png" alt="user"/>
+                                        <img src="/assets/user.png" alt="User" />
                                     </div>
                                     <div className="col-10 ps-3">
                                         <UserInfo>{item.author.fullName}</UserInfo>
@@ -65,7 +79,7 @@ const ArticleCard = () => {
                                     {item.content}
                                 </div>
                             </Card.Text>
-                            <Button style={{ backgroundColor: '#56AB91' }} className="w-100 border-0">See Details</Button>
+                            <Link to={`/article/${item.id}`} style={{ backgroundColor: '#56AB91', color: '#FFF' }} className="btn w-100 border-0">See Details</Link>
                         </Body>
                     </Card>
                 </div>
