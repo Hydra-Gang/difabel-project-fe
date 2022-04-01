@@ -33,21 +33,9 @@ const ArticleCardLandingPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const token = localStorage.getItem('difabel');
+                const { data: response } = await axios.get('http://localhost:5000/v1/articles/');
 
-                if (token) {
-                    const accessToken = JSON.parse(token).accessToken;
-
-                    if (accessToken) {
-                        const { data: response } = await axios.get('http://localhost:5000/v1/articles/', {
-                            headers: {
-                                'Authorization': `Bearer ${accessToken}`
-                            }
-                        });
-
-                        setData(response.data.articles);
-                    }
-                }
+                setData(response.data.articles);
             } catch (error) {
                 console.error(error.message);
             }
