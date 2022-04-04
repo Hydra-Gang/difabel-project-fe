@@ -107,7 +107,7 @@ const ReportPage = () => {
                         </div>
                         <form>
                             <ReportContent
-                                placeholder="Enter yout report"
+                                placeholder="Enter your report"
                                 type="content"
                                 name="content"
                                 value={text}
@@ -115,7 +115,7 @@ const ReportPage = () => {
                                 rows="6">
                             </ReportContent>
 
-                            <ButtonSubmit onClick={Submit}>Send Report</ButtonSubmit>
+                            <ButtonSubmit className="p-2" onClick={Submit}>Send Report</ButtonSubmit>
                         </form>
                     </Body>
                 </Card>

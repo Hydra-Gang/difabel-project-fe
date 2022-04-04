@@ -77,7 +77,7 @@ const App = () => {
         };
 
         checkAuthenticated();
-    }, []);
+    }, [userFullName]);
 
     return (
         <div className="app">
@@ -86,7 +86,7 @@ const App = () => {
                 <Route exact path="/" element={<Index />} />
                 <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} setUserFullName={setUserFullName} /> : <Navigate to="/" />} />
                 <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
-                <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
+                <Route exact path="/dashboard" element={isAuthenticated ? (userAccessLevel === 0 ? <Dashboard /> : <Navigate to="/" />) : <Navigate to="/login" />} />
                 <Route exact path="/article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />} />
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/article/*" element={isAuthenticated ? <ArticleDetails /> : <Navigate to="/login" />} />
