@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import '../../index.css';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const greenColor = '#01634B';
 
@@ -56,7 +57,9 @@ function ContentHero() {
                                 <Heading>YOUR RELIABLE, ACCURATE, AND TRUSTED DIFABLE INFORMATION</Heading>
                                 <DescriptionText>This website provides a variety of information and knowledge about people with disabilities. This website is also equipped with a map of the distribution of people with disabilities</DescriptionText>
                                 <div>
-                                    <ButtonFind as={ Button }>Find Difabel</ButtonFind>
+                                    <Link to="/map">
+                                        <ButtonFind as={Button}>Find Difabel</ButtonFind>
+                                    </Link>
                                 </div>
                             </div>
 

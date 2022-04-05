@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const Heading = styled.h1`
     color: #01634B;
@@ -24,7 +26,13 @@ function ContentReportPage() {
             <Image src='assets/bg-report-landing-page.png'></Image>
 
             <div className='row'>
-                <Button style={{ backgroundColor: '#01634B', padding: 16 }} className="w-50 center">Go to Report Page</Button>
+                <Link to="/report">
+                    <Button
+                        style={{ backgroundColor: '#01634B', padding: 16 }}
+                        className="w-100 center">
+                        Go to Report Page
+                    </Button>
+                </Link>
             </div>
         </div>
     );

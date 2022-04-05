@@ -15,9 +15,9 @@ const Dashboard = () => {
             <div className="row">
                 <ReportListPage />
             </div>
-            {/* <div className="row" style={{ marginTop: '180px' }}>
+            <div className="row" style={{ marginTop: '180px' }}>
                 <DifabelLocationListPage />
-            </div> */}
+            </div>
             <div className="row" style={{ marginTop: '180px' }}>
                 <ArticleListPage/>
             </div>

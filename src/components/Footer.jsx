@@ -36,13 +36,13 @@ function Footer() {
             <div className='container py-5'>
                 <div className='row d-flex align-items-center'>
                     <div className='col-lg-5'>
-                        <Logo src='/assets/logo_footer.png' alt='logo'/>
+                        <Logo src='/assets/logo_footer.png' alt='logo' />
                         <div className='row'>
                             <p className='copyright'>Copyright &copy; 2022, Difabel</p>
                         </div>
 
                         <div className='row slogan'>
-                            <p>Your reliable, accurate, and trusted <br/>difabel information</p>
+                            <p>Your reliable, accurate, and trusted <br />difabel information</p>
                         </div>
                     </div>
 
@@ -85,13 +85,16 @@ function Footer() {
 
                             <div className='col-lg-4 col-sm-4 mt-4'>
                                 <LinkText href="#">
-                                    <FaWhatsapp className='icon'/>
+                                    <FaWhatsapp className='icon' />
                                 </LinkText>
                             </div>
                         </div>
 
                         <div className='row text-center'>
-                            <Button className='w-100 mt-3 btn btn-success'>CONTACT US</Button>
+                            <a href="https://goo.gl/maps/GicyT9etpQ2sMbHX6">
+                                <Button className='w-100 mt-3 btn btn-success'>CONTACT US</Button>
+                            </a>
+
                         </div>
                     </div>
                 </div>

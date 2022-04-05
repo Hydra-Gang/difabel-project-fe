@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Heading = styled.h1`
     color: #01634B;
@@ -55,12 +56,15 @@ function ContentCarousel() {
                 </Carousel.Item>
             </Carousel>
             <div className='row'>
-                <Button
-                    style={{ backgroundColor: '#01634B', padding: 20, marginTop: 15 }}
-                    className="w-75 center"
-                >
-                Go to Donation Page
-                </Button>
+                <Link to="/donate">
+                    <Button
+                        style={{ backgroundColor: '#01634B', padding: 20, marginTop: 15 }}
+                        className="w-100 center"
+                    >
+                        Go to Donation Page
+                    </Button>
+                </Link>
+
             </div>
         </div>
     );
