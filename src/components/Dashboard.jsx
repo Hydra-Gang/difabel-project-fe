@@ -15,13 +15,15 @@ const Dashboard = () => {
             <div className="row">
                 <ReportListPage />
             </div>
-            <div className="row" style={{ marginTop: '180px' }}>
+            {/* <div className="row" style={{ marginTop: '180px' }}>
                 <DifabelLocationListPage />
+            </div> */}
+            {/* <div className="row" style={{ marginTop: '180px' }}>
             </div>
             <div className="row" style={{ marginTop: '180px' }}>
-                <ArticleListPage/>
-            </div>
-            <div className="row" style={{ marginTop: '180px' }}>
+                <ArticleListPage />
+            </div> */}
+            <div div className="row" style={{ marginTop: '180px' }}>
                 <AccessLevelPage />
             </div>
         </div>

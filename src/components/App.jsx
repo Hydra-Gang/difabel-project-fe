@@ -77,20 +77,20 @@ const App = () => {
         };
 
         checkAuthenticated();
-    }, []);
+    }, [userFullName]);
 
     return (
         <div className="app">
-            <Header isAuthenticated={isAuthenticated} userFullName={userFullName} />
+            <Header isAuthenticated={isAuthenticated} userFullName={userFullName} setIsAuthenticated={setIsAuthenticated} />
             <Routes>
                 <Route exact path="/" element={<Index />} />
                 <Route exact path="/login" element={!isAuthenticated ? <LoginPage setIsAuthenticated={setIsAuthenticated} setUserFullName={setUserFullName} /> : <Navigate to="/" />} />
                 <Route exact path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/" />} />
-                <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
+                <Route exact path="/dashboard" element={isAuthenticated ? (userAccessLevel === 0 ? <Dashboard /> : <Navigate to="/" />) : <Navigate to="/login" />} />
                 <Route exact path="/article" element={isAuthenticated ? <ArticlePage /> : <Navigate to="/login" />} />
                 <Route exact path="/article/add" element={isAuthenticated ? <ArticlePost /> : <Navigate to="/login" />} />
                 <Route exact path="/article/*" element={isAuthenticated ? <ArticleDetails /> : <Navigate to="/login" />} />
-                <Route exact path="/report" element={<ReportPage/>} />
+                <Route exact path="/report" element={<ReportPage />} />
                 <Route exact path="/report/list" element={isAuthenticated ? <ReportListPage /> : <Navigate to="/login" />} />
                 <Route exact path="/donate" element={<DonationPage />} />
                 <Route exact path="/donation" element={<DonationList userAccessLevel={userAccessLevel} />} />
@@ -98,7 +98,7 @@ const App = () => {
                 <Route exact path="/map" element={<Map widthMap="50vw" heightMap="80vh" />} />
                 <Route exact path="/map/add" element={<MapPost />} />
             </Routes>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

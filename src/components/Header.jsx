@@ -9,7 +9,7 @@ const image = '/assets/Logo.png';
 const whiteColor = 'white';
 const greenColor = '#01634B';
 
-function Header({ isAuthenticated, userFullName }) {
+function Header({ isAuthenticated, userFullName, setIsAuthenticated }) {
     const logout = (e) => {
         e.preventDefault();
 
@@ -23,6 +23,7 @@ function Header({ isAuthenticated, userFullName }) {
         });
 
         localStorage.removeItem('difabel');
+        setIsAuthenticated(false);
     };
 
     return (
@@ -77,7 +78,7 @@ function Header({ isAuthenticated, userFullName }) {
                                     <Form>
                                         <li>
                                             <Nav.Link as={Link} to="/profile">
-                                                <Button variant="white" className='p-0'> <FaEdit/> Profile</Button>
+                                                <Button variant="white" className='p-0'> <FaEdit /> Profile</Button>
                                             </Nav.Link>
                                         </li>
                                         <li><Button type="submit" className="dropdown-item py-2 rounded" variant="green" onClick={logout}><FaSignOutAlt /> Logout</Button></li>
@@ -104,7 +105,8 @@ function Header({ isAuthenticated, userFullName }) {
 
 Header.propTypes = {
     isAuthenticated: PropTypes.bool,
-    userFullName: PropTypes.string
+    userFullName: PropTypes.string,
+    setIsAuthenticated: PropTypes.func
 };
 
 export default Header;
